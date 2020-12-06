@@ -9,6 +9,10 @@ public class Player : Entity
     private Animator animator;
 
     [SerializeField]
+    private float coolDown = 1;
+    private float coolDownTimer=0;
+
+    [SerializeField]
     public Transform attackRangeTransform;
 
     [SerializeField]
@@ -17,20 +21,25 @@ public class Player : Entity
     private int attackDamage = 7;
 
     public LayerMask enemyLayer;
-
-
-
-
     void Update()
     {
         base.EntityUpdate();
-
-        if (Input.GetKeyDown(KeyCode.Space))
+         
+        // If player attacks, needs to be check is not in coolDown. 
+        if (Input.GetKeyDown(KeyCode.Space) && coolDownTimer == 0)
         {
-
             Attack();
             animator.SetTrigger("Kick");
+            coolDownTimer = coolDown;
         }
+
+
+        coolDownTimer -= Time.deltaTime;
+        if(coolDownTimer < 0)
+        {
+            coolDownTimer = 0;
+        }
+
     }
 
     void Attack()
@@ -49,12 +58,5 @@ public class Player : Entity
     {
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(attackRangeTransform.position, attackRange);
-    }
-
-
-    IEnumerator waiter()
-    {
-        //Wait for 4 seconds
-        yield return new WaitForSeconds(20);
     }
 }
