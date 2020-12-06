@@ -1,11 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : Entity
 {
     [SerializeField]
-    private Transform attackRangeTransform;
+    private Animator animator;
+
+    [SerializeField]
+    public Transform attackRangeTransform;
 
     [SerializeField]
     private float attackRange = 3.0f;
@@ -14,13 +18,18 @@ public class Player : Entity
 
     public LayerMask enemyLayer;
 
+
+
+
     void Update()
     {
         base.EntityUpdate();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+
             Attack();
+            animator.SetTrigger("Kick");
         }
     }
 
@@ -28,7 +37,7 @@ public class Player : Entity
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(attackRangeTransform.position, attackRange, enemyLayer);
 
-        foreach(Collider2D col in colliders)
+        foreach (Collider2D col in colliders)
         {
             Enemy enemy = col.GetComponent<Enemy>();
 
@@ -40,5 +49,12 @@ public class Player : Entity
     {
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(attackRangeTransform.position, attackRange);
+    }
+
+
+    IEnumerator waiter()
+    {
+        //Wait for 4 seconds
+        yield return new WaitForSeconds(20);
     }
 }
