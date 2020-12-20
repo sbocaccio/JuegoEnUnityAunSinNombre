@@ -30,21 +30,20 @@ public class Movimiento : MonoBehaviour
         Vector3 characterScale = transform.localScale;
         
         if (movementX < 0) {
-            //Debug.Log("Camino");
-           // animator.SetTrigger("Walk");
+           
             animator.SetInteger("Movement_x", 1);
             
             characterScale.x = -1;
         }
         else if (movementX > 0)
         {
-           // animator.SetTrigger("Walk");
+          
             animator.SetInteger("Movement_x", 1);
             characterScale.x = 1;
         }
         else
         {
-            //animator.SetInteger("Movement_x_negative", 0);
+           
             animator.SetInteger("Movement_x", 0);
         }
        

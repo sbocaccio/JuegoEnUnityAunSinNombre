@@ -10,7 +10,7 @@ public class Player : Entity
 
     [SerializeField]
     private float coolDown = 1;
-    private float coolDownTimer=0;
+    private float coolDownTimer = 0;
 
     [SerializeField]
     public Transform attackRangeTransform;
@@ -24,7 +24,7 @@ public class Player : Entity
     void Update()
     {
         base.EntityUpdate();
-         
+
         // If player attacks, needs to be check is not in coolDown. 
         if (Input.GetKeyDown(KeyCode.Space) && coolDownTimer == 0)
         {
@@ -35,7 +35,7 @@ public class Player : Entity
 
 
         coolDownTimer -= Time.deltaTime;
-        if(coolDownTimer < 0)
+        if (coolDownTimer < 0)
         {
             coolDownTimer = 0;
         }
@@ -59,4 +59,5 @@ public class Player : Entity
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(attackRangeTransform.position, attackRange);
     }
+
 }

@@ -14,9 +14,9 @@ TagManager:
   - 
   - 
   - Enemies
-  - 
-  - 
-  - 
+  - Player
+  - Floor
+  - Objects
   - 
   - 
   - 
