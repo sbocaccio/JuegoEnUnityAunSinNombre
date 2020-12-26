@@ -14,8 +14,12 @@ public class EnemyAttack : MonoBehaviour
     private float dist;
     [SerializeField]
     private float howclose;
+    [SerializeField]
+    private float coolDown = 1;
+    private float coolDownTimer = 0;
+
     // Start is called before the first frame update
-     void Start()
+    void Start()
     {
         player_script = playerObject.GetComponent<Player>();
         player_transform = GameObject.FindGameObjectWithTag("Player").transform;
@@ -30,11 +34,23 @@ public class EnemyAttack : MonoBehaviour
             dist = Vector2.Distance(player_transform.position, transform.position);
             if (dist < howclose)
             {
-                Debug.Log("Saque vida");
-                player_script.TakeDamage(5);
+                if (coolDownTimer == 0f)
+                {
+                    Debug.Log("Saque vida");
+                    player_script.TakeDamage(5);
+                    coolDownTimer = coolDown;
+                }    
             }
+
+            coolDownTimer -= Time.deltaTime;
+            if (coolDownTimer < 0)
+            {
+                coolDownTimer = 0;
+            }
+
+
         }
-        
+
     }
 }
 
