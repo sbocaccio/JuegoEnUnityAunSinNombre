@@ -29,7 +29,7 @@ public class Player : Entity
         if (Input.GetKeyDown(KeyCode.Space) && coolDownTimer == 0)
         {
             Attack();
-            animator.SetTrigger("Kick");
+            animator.SetTrigger("Punch");
             coolDownTimer = coolDown;
         }
 

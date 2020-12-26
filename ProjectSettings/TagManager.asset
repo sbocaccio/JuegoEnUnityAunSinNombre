@@ -18,7 +18,7 @@ TagManager:
   - Floor
   - Objects
   - Background
-  - 
+  - Health_Bar
   - 
   - 
   - 
@@ -38,15 +38,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Enemies
     uniqueID: 3480322601
+    locked: 0
+  - name: Background
+    uniqueID: 286077359
     locked: 0
   - name: Player
     uniqueID: 1726052273
     locked: 0
-  - name: Background
-    uniqueID: 286077359
+  - name: Health_Bar
+    uniqueID: 2998902781
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
