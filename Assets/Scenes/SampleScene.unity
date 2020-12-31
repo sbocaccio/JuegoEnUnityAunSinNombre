@@ -464,7 +464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  lookRadius: 30
+  lookRadius: 40
   target: {fileID: 617996869}
 --- !u!114 &25964390
 MonoBehaviour:
@@ -802,6 +802,7 @@ GameObject:
   - component: {fileID: 555962191}
   - component: {fileID: 555962193}
   - component: {fileID: 555962192}
+  - component: {fileID: 555962194}
   m_Layer: 12
   m_Name: Floor
   m_TagString: Untagged
@@ -35050,6 +35051,25 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!95 &555962194
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555962190}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 929b3d0184693aa449cbfdf394d963a1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &617996865
 GameObject:
   m_ObjectHideFlags: 0
@@ -35066,6 +35086,7 @@ GameObject:
   - component: {fileID: 617996868}
   - component: {fileID: 617996872}
   - component: {fileID: 617996873}
+  - component: {fileID: 617996874}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -35255,6 +35276,20 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &617996874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617996865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1752bff19a1de53479c474f1d9cbeba2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerObject: {fileID: 617996865}
+  animator: {fileID: 617996867}
 --- !u!1 &623297936
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,6 +28,7 @@ public class Movimiento : MonoBehaviour
 
 
         Vector3 characterScale = transform.localScale;
+       
         
         if (movementX < 0) {
            

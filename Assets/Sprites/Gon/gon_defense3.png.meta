@@ -1,0 +1,371 @@
+fileFormatVersion: 2
+guid: 49733744bbb00e04b925f345eef6e530
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1606594225575678317
+    second: gon_defense3_0
+  - first:
+      213: 5358031291633532696
+    second: gon_defense3_1
+  - first:
+      213: 2255821963744291285
+    second: gon_defense3_2
+  - first:
+      213: -8964910804764737746
+    second: gon_defense3_3
+  - first:
+      213: -8977716357739557679
+    second: gon_defense3_4
+  - first:
+      213: -2488698388036087883
+    second: gon_defense3_5
+  - first:
+      213: 3011026027024702949
+    second: gon_defense3_6
+  - first:
+      213: -6414606738673933454
+    second: gon_defense3_7
+  - first:
+      213: -4671100642273207852
+    second: gon_defense3_8
+  - first:
+      213: 8498817207831622781
+    second: gon_defense3_9
+  - first:
+      213: -633131648448369500
+    second: gon_defense3_10
+  - first:
+      213: -4420322109825789668
+    second: gon_defense3_11
+  - first:
+      213: -1070025682778417693
+    second: gon_defense3_12
+  - first:
+      213: 5019366294735349139
+    second: gon_defense3_13
+  - first:
+      213: -4019168677295785823
+    second: gon_defense3_14
+  - first:
+      213: 3906954548238677501
+    second: gon_defense3_15
+  - first:
+      213: -6164966120670594805
+    second: gon_defense3_16
+  - first:
+      213: -2382411498248073229
+    second: gon_defense3_17
+  - first:
+      213: -5282756207440254405
+    second: gon_defense3_18
+  - first:
+      213: 4441475003986241890
+    second: gon_defense3_19
+  - first:
+      213: 9066121130875352128
+    second: gon_defense3_20
+  - first:
+      213: 5629185725837405874
+    second: gon_defense3_21
+  - first:
+      213: 7740597233214999037
+    second: gon_defense3_22
+  - first:
+      213: -6579336977761794519
+    second: gon_defense3_23
+  - first:
+      213: -1717074519790790208
+    second: gon_defense3_24
+  - first:
+      213: 4866560225063890383
+    second: gon_defense3_25
+  - first:
+      213: -6383471932474142251
+    second: gon_defense3_26
+  - first:
+      213: -8177059663647693044
+    second: gon_defense3_27
+  - first:
+      213: -7808770099561305037
+    second: gon_defense3_28
+  - first:
+      213: -34378271122609070
+    second: gon_defense3_29
+  - first:
+      213: -9034769115077929473
+    second: gon_defense3_30
+  - first:
+      213: 2412891158868208348
+    second: gon_defense3_31
+  - first:
+      213: -3437050926711413504
+    second: gon_defense3_32
+  - first:
+      213: 473839158826371007
+    second: gon_defense3_33
+  - first:
+      213: -5547933532041443451
+    second: gon_defense3_34
+  - first:
+      213: 5103311632630387061
+    second: gon_defense3_35
+  - first:
+      213: -6294027842561001959
+    second: gon_defense3_36
+  - first:
+      213: 2402679389924201012
+    second: gon_defense3_37
+  - first:
+      213: -3571870005463672139
+    second: gon_defense3_38
+  - first:
+      213: -6776194443268312537
+    second: gon_defense3_39
+  - first:
+      213: -9009746841315157223
+    second: gon_defense3_40
+  - first:
+      213: 7538526876618414598
+    second: gon_defense3_41
+  - first:
+      213: 1243770715750886090
+    second: gon_defense3_42
+  - first:
+      213: -6160692209075559729
+    second: gon_defense3_43
+  - first:
+      213: 5390779596578102504
+    second: gon_defense3_44
+  - first:
+      213: 3164056374499261458
+    second: gon_defense3_45
+  - first:
+      213: -8073941197493010916
+    second: gon_defense3_46
+  - first:
+      213: 5011867807023776453
+    second: gon_defense3_47
+  - first:
+      213: -7397853567260051135
+    second: gon_defense3_48
+  - first:
+      213: 9149005889342546354
+    second: gon_defense3_49
+  - first:
+      213: 7056078309442708268
+    second: gon_defense3_50
+  - first:
+      213: 6837348470078572550
+    second: gon_defense3_51
+  - first:
+      213: 5018751107532638969
+    second: gon_defense3_52
+  - first:
+      213: -8489878125447895673
+    second: gon_defense3_53
+  - first:
+      213: -8939778433441012623
+    second: gon_defense3_54
+  - first:
+      213: 3292566224128733493
+    second: gon_defense3_55
+  - first:
+      213: -622966115406509342
+    second: gon_defense3_56
+  - first:
+      213: -2722646420693028171
+    second: gon_defense3_57
+  - first:
+      213: 2859857981286638715
+    second: gon_defense3_58
+  - first:
+      213: 1178905040965134568
+    second: gon_defense3_59
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 8
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: gon_defense3_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1374
+        width: 38
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39e2e5e501b34b9e0800000000000000
+      internalID: -1606594225575678317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gon_defense3_1
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 1374
+        width: 38
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81f7e39521d8b5a40800000000000000
+      internalID: 5358031291633532696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gon_defense3_2
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 1374
+        width: 38
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d9a089cf1a4e4f10800000000000000
+      internalID: 2255821963744291285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

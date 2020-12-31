@@ -28,6 +28,7 @@ public class Player : Entity
         // If player attacks, needs to be check is not in coolDown. 
         if (Input.GetKeyDown(KeyCode.Space) && coolDownTimer == 0)
         {
+           
             Attack();
             animator.SetTrigger("Punch");
             coolDownTimer = coolDown;

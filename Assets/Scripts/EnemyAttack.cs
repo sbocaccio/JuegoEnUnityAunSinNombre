@@ -9,6 +9,7 @@ public class EnemyAttack : MonoBehaviour
     private GameObject playerObject;
     private Transform player_transform;
     Player player_script;
+    Defence player_defence;
 
     [SerializeField]
     private float dist;
@@ -21,23 +22,26 @@ public class EnemyAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Need some script of the main character to know things such as location, defenceMode. 
         player_script = playerObject.GetComponent<Player>();
         player_transform = GameObject.FindGameObjectWithTag("Player").transform;
+        player_defence = player_script.GetComponent<Defence>();
     }
 
     // Update is called once per frame
     public void Update()
     {
-        // When MainCaracter dies, the game should stop (or not, depend on designer decision). This is only safe cody just in case.  
+        // When MainCaracter dies, the game should stop (or not, depend on designer decision). This is only safe code just in case.  
         if (player_transform != null)
         {
             dist = Vector2.Distance(player_transform.position, transform.position);
-            if (dist < howclose)
+            if (dist < howclose && !player_defence.defenseActivated())
             {
                 if (coolDownTimer == 0f)
                 {
                     Debug.Log("Saque vida");
                     player_script.TakeDamage(5);
+                    
                     coolDownTimer = coolDown;
                 }    
             }
