@@ -30,10 +30,12 @@ public class Defence : MonoBehaviour
         {
             animator.SetTrigger("Defence_activated");
             DefenseMode = true;
-           // Debug.Log("Apreto X");
+            // Debug.Log("Apreto X");
+            animator.ResetTrigger("Defence_desactivated");
         }
         if (Input.GetKeyUp(KeyCode.X))
         {
+            animator.ResetTrigger("Defence_activated");
             animator.SetTrigger("Defence_desactivated");
             DefenseMode = false;
            // Debug.Log("No apreto X");
