@@ -34,6 +34,7 @@ public class EnemyAttack : MonoBehaviour
         // When MainCaracter dies, the game should stop (or not, depend on designer decision). This is only safe code just in case.  
         if (player_transform != null)
         {
+            // Attack if in range
             dist = Vector2.Distance(player_transform.position, transform.position);
             if (dist < howclose && !player_defence.defenseActivated())
             {
@@ -45,6 +46,7 @@ public class EnemyAttack : MonoBehaviour
                     coolDownTimer = coolDown;
                 }    
             }
+
 
             coolDownTimer -= Time.deltaTime;
             if (coolDownTimer < 0)
