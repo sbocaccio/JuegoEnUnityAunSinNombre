@@ -15,14 +15,21 @@ public class Movimiento : MonoBehaviour
     [SerializeField]
     private float velocity_punishment = 0.5f;
     public float velocidad = 0.3f;
-    
+
+
+    public int characterSpriteSize()
+    {
+        // Player looks right is positive, left is negative
+        if (transform.localScale.x > 0) return 1;
+        else return -1;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -65,8 +72,12 @@ public class Movimiento : MonoBehaviour
         else
         {
             transform.Translate(new Vector3(movementX, movementY, 0)* velocity_punishment * velocidad * Time.deltaTime);
-
+            defence_player.updateDefenceSize();
         }
        
     }
+
+
+    
+    
 }

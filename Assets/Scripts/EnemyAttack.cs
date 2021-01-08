@@ -10,7 +10,6 @@ public class EnemyAttack : MonoBehaviour
     private Transform player_transform;
     Player player_script;
     Defence player_defence;
-
     [SerializeField]
     private float dist;
     [SerializeField]
@@ -26,6 +25,7 @@ public class EnemyAttack : MonoBehaviour
         player_script = playerObject.GetComponent<Player>();
         player_transform = GameObject.FindGameObjectWithTag("Player").transform;
         player_defence = player_script.GetComponent<Defence>();
+
     }
 
     // Update is called once per frame
@@ -36,10 +36,20 @@ public class EnemyAttack : MonoBehaviour
         {
             // Attack if in range
             dist = Vector2.Distance(player_transform.position, transform.position);
-            if (dist < howclose && !player_defence.defenseActivated())
+            if (dist < howclose && (!player_defence.defenseActivated() || 
+               (player_defence.defenseSize() < 0 && ((player_transform.position.x - transform.position.x < 0)) || //Attack from behind
+               (player_defence.defenseSize() > 0 && (player_transform.position.x - transform.position.x > 0)))))
             {
                 if (coolDownTimer == 0f)
                 {
+                    
+                    Debug.Log("Defence Size is");
+                    Debug.Log(player_defence.defenseSize());
+                    /*
+                    Debug.Log("And transform diference is");
+                    Debug.Log(player_transform.position.x - transform.position.x);
+                    */
+
                     Debug.Log("Saque vida");
                     player_script.TakeDamage(5);
                     
