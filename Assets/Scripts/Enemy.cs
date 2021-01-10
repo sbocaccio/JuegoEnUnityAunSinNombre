@@ -1,8 +1,10 @@
 ﻿
 
+using UnityEngine;
+
 public class Enemy : Entity
 {
-
+    
     EnemyAttack enemy_attack; 
     void Start()
     {
@@ -14,4 +16,6 @@ public class Enemy : Entity
         //enemy_attack.TryAttackPlayer();
         base.EntityUpdate();
     }
+   
 }
+

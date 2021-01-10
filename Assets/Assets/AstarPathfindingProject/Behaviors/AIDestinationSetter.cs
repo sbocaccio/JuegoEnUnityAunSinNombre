@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System;
+
 namespace Pathfinding {
 	/// <summary>
 	/// Sets the destination of an AI to the position of a specified object.
@@ -16,7 +17,7 @@ namespace Pathfinding {
 	public class AIDestinationSetter : VersionedMonoBehaviour {
 		/// <summary>The object that the AI should move to</summary>
 		/// 
-
+		public Transform start_position;
 		public float lookRadius = 10f;
 		public Transform target;
 		IAstarAI ai;
@@ -28,7 +29,7 @@ namespace Pathfinding {
 			Gizmos.DrawSphere(transform.position, lookRadius);
         }
 
-		void OnEnable () {
+			void OnEnable () {
 			ai = GetComponent<IAstarAI>();
 			// Update the destination right before searching for a path as well.
 			// This is enough in theory, but this script will also update the destination every
@@ -40,6 +41,15 @@ namespace Pathfinding {
 		void OnDisable () {
 			if (ai != null) ai.onSearchPath -= Update;
 		}
+
+		
+		void Start()
+		{
+		
+			target = start_position;
+
+		}
+
 
 		/// <summary>Updates the AI's destination every frame</summary>
 		void Update () {
