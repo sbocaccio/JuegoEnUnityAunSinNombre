@@ -19,9 +19,14 @@ namespace Pathfinding {
 	public class AIDestinationSetter : VersionedMonoBehaviour {
 		/// <summary>The object that the AI should move to</summary>
 		/// 
-		
 
-        
+
+		[SerializeField]
+		private bool patrol_horizontal = false;
+		[SerializeField]
+		private bool patrol_vertical = true;
+		[SerializeField]
+		private float stop_time = 4;
 		[SerializeField]
 		private Transform player_transform; 
 		public float lookRadius = 10f;
@@ -31,6 +36,8 @@ namespace Pathfinding {
 		private Vector3 inicial_pos;
 		private Vector3 patroling_pos;
 		public Timer patrol_timer;
+		
+
 		
 
 
@@ -64,7 +71,7 @@ namespace Pathfinding {
 			inicial_pos = transform.position;
 			patroling_pos = inicial_pos;
 			target = player_transform;
-			patrol_timer = new Timer(4f);
+			patrol_timer = new Timer(stop_time);
 
 
 
@@ -73,9 +80,20 @@ namespace Pathfinding {
 			ai.destination = target.position;
 		}
 		private void FlipSize() {
-			inicial_pos.y = inicial_pos.y + (movementSize * patrol_range);
-			movementSize = movementSize * -1;
-			ai.destination = patroling_pos;
+            if (patrol_vertical)
+			{
+				inicial_pos.y = inicial_pos.y + (movementSize * patrol_range);
+				movementSize = movementSize * -1;
+				ai.destination = inicial_pos;
+			}
+			else if (patrol_horizontal)
+            {
+				inicial_pos.x = inicial_pos.x + (movementSize * patrol_range);
+				movementSize = movementSize * -1;
+				ai.destination = inicial_pos;
+
+
+			}
 		}
 
 		private float Distance(Vector3 pos)
@@ -96,12 +114,10 @@ namespace Pathfinding {
 				else
 				{
 					ai.destination = inicial_pos;
-					Debug.Log(Distance(inicial_pos));
 					if (Distance(inicial_pos) < 4)
 					{
 						patrol_timer.setTimer(); // Only set if it wasn't set before.
-   												//It's capable of start again when the time counter is equal to cero.  
-                       
+   												//It's capable of start again when the time counter is equal to cero.    
 						if (patrol_timer.timeOver())
                         {
 							FlipSize();
