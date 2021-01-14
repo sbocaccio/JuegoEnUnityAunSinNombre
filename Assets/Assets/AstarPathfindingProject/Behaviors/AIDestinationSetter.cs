@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections;
 using System;
 
+
+
 namespace Pathfinding {
 	/// <summary>
 	/// Sets the destination of an AI to the position of a specified object.
@@ -17,11 +19,25 @@ namespace Pathfinding {
 	public class AIDestinationSetter : VersionedMonoBehaviour {
 		/// <summary>The object that the AI should move to</summary>
 		/// 
-		public Transform start_position;
-		public float lookRadius = 10f;
-		public Transform target;
-		IAstarAI ai;
+		
 
+        
+		[SerializeField]
+		private Transform player_transform; 
+		public float lookRadius = 10f;
+		[SerializeField]
+		private int patrol_range = 14;
+		public Transform target;
+		private Vector3 inicial_pos;
+		private Vector3 patroling_pos;
+		public Timer patrol_timer;
+		
+
+
+
+		private float movementSize = 1; // It's value are only 1 or -1, 
+		IAstarAI ai;
+		
 		void onDrawGizmosSelected()
         {
 
@@ -45,20 +61,53 @@ namespace Pathfinding {
 		
 		void Start()
 		{
-		
-			target = start_position;
+			inicial_pos = transform.position;
+			patroling_pos = inicial_pos;
+			target = player_transform;
+			patrol_timer = new Timer(4f);
+
+
 
 		}
+		private void AttackMode() {
+			ai.destination = target.position;
+		}
+		private void FlipSize() {
+			inicial_pos.y = inicial_pos.y + (movementSize * patrol_range);
+			movementSize = movementSize * -1;
+			ai.destination = patroling_pos;
+		}
+
+		private float Distance(Vector3 pos)
+        {
+			return (Math.Abs(pos.x - transform.position.x) + Math.Abs(pos.y - transform.position.y));
 
 
+		}
 		/// <summary>Updates the AI's destination every frame</summary>
 		void Update () {
 			// 
 			if (target != null && ai != null)
 			{
-				if ((Math.Abs(target.position.x - transform.position.x) + Math.Abs(target.position.y - transform.position.y)) < lookRadius)
+				if ((Distance(target.position) < lookRadius))
 				{
-					ai.destination = target.position;
+					AttackMode();
+				}
+				else
+				{
+					ai.destination = inicial_pos;
+					Debug.Log(Distance(inicial_pos));
+					if (Distance(inicial_pos) < 4)
+					{
+						patrol_timer.setTimer(); // Only set if it wasn't set before.
+   												//It's capable of start again when the time counter is equal to cero.  
+                       
+						if (patrol_timer.timeOver())
+                        {
+							FlipSize();
+						}
+
+					}
 				}
 			}
 		}

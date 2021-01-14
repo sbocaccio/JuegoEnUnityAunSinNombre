@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : Entity
 {
-    
+    public int hola = 1;
     EnemyAttack enemy_attack; 
     void Start()
     {
