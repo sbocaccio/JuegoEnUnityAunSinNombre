@@ -20,7 +20,7 @@ namespace Pathfinding {
 		/// <summary>The object that the AI should move to</summary>
 		/// 
 
-
+		public Animator animator;
 		[SerializeField]
 		private bool patrol_horizontal = false;
 		[SerializeField]
@@ -107,20 +107,27 @@ namespace Pathfinding {
 			// 
 			if (target != null && ai != null)
 			{
+
 				if ((Distance(target.position) < lookRadius))
 				{
 					AttackMode();
+					animator.SetInteger("State", 2);
+					Debug.Log("Atacando!");
 				}
 				else
 				{
+					animator.SetInteger("State", 0);
 					ai.destination = inicial_pos;
 					if (Distance(inicial_pos) < 4)
 					{
 						patrol_timer.setTimer(); // Only set if it wasn't set before.
-   												//It's capable of start again when the time counter is equal to cero.    
+												 //It's capable of start again when the time counter is equal to cero.    
+
+						
 						if (patrol_timer.timeOver())
                         {
 							FlipSize();
+							
 						}
 
 					}
