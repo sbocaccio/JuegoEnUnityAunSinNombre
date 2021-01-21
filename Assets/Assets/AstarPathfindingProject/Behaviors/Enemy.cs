@@ -1,15 +1,14 @@
 ﻿
-
 using UnityEngine;
 
 public class Enemy : Entity
 {
-   
-    EnemyAttack enemy_attack; 
-     
+
+    EnemyAttack enemy_attack;
+
     void Start()
     {
-       // enemy_attack.FindEnemy();
+        // enemy_attack.FindEnemy();
     }
 
     void Update()
@@ -17,6 +16,8 @@ public class Enemy : Entity
         //enemy_attack.TryAttackPlayer();
         base.EntityUpdate();
     }
-   
+
 }
+
+
 

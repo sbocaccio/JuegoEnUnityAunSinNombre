@@ -20,6 +20,7 @@ namespace Pathfinding {
 		/// <summary>The object that the AI should move to</summary>
 		/// 
 
+		
 		public Animator animator;
 		[SerializeField]
 		private bool patrol_horizontal = false;
@@ -36,6 +37,7 @@ namespace Pathfinding {
 		private Vector3 inicial_pos;
 		private Vector3 patroling_pos;
 		public Timer patrol_timer;
+		public enemy_animator animations;
 		
 
 		
@@ -72,6 +74,7 @@ namespace Pathfinding {
 			patroling_pos = inicial_pos;
 			target = player_transform;
 			patrol_timer = new Timer(stop_time);
+			animations = new enemy_animator(animator, transform);
 
 
 
@@ -110,26 +113,32 @@ namespace Pathfinding {
 
 				if ((Distance(target.position) < lookRadius))
 				{
+					//Must change if it was idle.
+					animations.FinishIdle();
+
 					AttackMode();
-					animator.SetInteger("State", 2);
-					Debug.Log("Atacando!");
+					animations.TurnSide(target.position);
+					animations.StartRunning();
+				
 				}
 				else
 				{
-					animator.SetInteger("State", 0);
 					ai.destination = inicial_pos;
 					if (Distance(inicial_pos) < 4)
 					{
+						animations.StartIdle();
 						patrol_timer.setTimer(); // Only set if it wasn't set before.
-												 //It's capable of start again when the time counter is equal to cero.    
-
-						
+												 //It's capable of start again when the time counter is equal to cero.    		
 						if (patrol_timer.timeOver())
                         {
 							FlipSize();
-							
+							animations.FinishIdle();
 						}
 
+					}
+                    else
+                    {
+						animations.StartWalking();
 					}
 				}
 			}

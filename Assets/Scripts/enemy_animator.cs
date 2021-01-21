@@ -36,23 +36,10 @@ public class enemy_animator : MonoBehaviour
         enemy_transform.localScale = characterScale;
     }
 
-    public void StartIdle() 
-    {
-        animator.SetBool("Idle",true);
-    }
-    public void FinishIdle()
-    {
-        animator.SetBool("Idle", false);
-    }
-    
-    public void StartWalking()
-    {
-        animator.SetInteger("State", (int)EnemyStates.Walking);
-    }
-
     public void StartRunning()
     {
         animator.SetInteger("State", (int) EnemyStates.Running);
+
     }
     public void StopRunning()
     {
@@ -60,13 +47,13 @@ public class enemy_animator : MonoBehaviour
     }
     void Start()
     {
-      
+       // animator.SetInteger("State", 2);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        //animator.SetInteger("State", 2);
 
     }
 }
