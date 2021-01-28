@@ -7,66 +7,82 @@ enum EnemyStates
     Idle = 0,
     Walking ,
     Running,
+    OnGuard,
+    ReadyToAttack,
+    Attacking,
 }
 
 public class enemy_animator : MonoBehaviour
 {
     // Start is called before the first frame update
-    private Animator animator;
-    private Transform enemy_transform;
+    public Animator animator;
 
-    public enemy_animator( Animator anim, Transform enemy_trans)
-    {
-        animator = anim;
-        enemy_transform = enemy_trans;
-    }
+    
 
     // Flip where the player is looking depending on where is the target.
     public void TurnSide(Vector3 target)
     {
-        Vector3 characterScale = enemy_transform.localScale;
+        Vector3 characterScale = gameObject.transform.localScale;
         // The player is on the left
-        if ((enemy_transform.position.x - target.x) >= 0)
+        if ((gameObject.transform.position.x - target.x) >= 0)
         {
             characterScale.x = -1;     
         }
         else {
             characterScale.x = 1;
         }
-        enemy_transform.localScale = characterScale;
-    }
-
-    public void StartIdle() 
-    {
-        animator.SetBool("Idle",true);
-    }
-    public void FinishIdle()
-    {
-        animator.SetBool("Idle", false);
-    }
-    
-    public void StartWalking()
-    {
-        animator.SetInteger("State", (int)EnemyStates.Walking);
+        gameObject.transform.localScale = characterScale;
     }
 
     public void StartRunning()
     {
         animator.SetInteger("State", (int) EnemyStates.Running);
+
     }
     public void StopRunning()
     {
-        animator.SetInteger("State", (int)EnemyStates.Idle);
+        animator.SetInteger("State", (int)EnemyStates.Walking);
     }
+
+    public void StartIdle()
+    {
+        animator.SetInteger("State", (int)EnemyStates.Idle);
+        animator.SetBool("Idle", true);
+    }
+    public void StopIdle()
+    {
+        animator.SetBool("Idle", false);
+    }
+    public void StartWalking()
+    {
+        animator.SetInteger("State", (int)EnemyStates.Walking);
+
+    }
+    public void StopWalking()
+    {
+        animator.SetInteger("State", (int)EnemyStates.Idle);
+
+    }
+    public void StartOnGuard()
+    {
+        animator.SetInteger("State", (int)EnemyStates.OnGuard);
+
+    }
+    public void StopOnGuard()
+    {
+        animator.SetInteger("State", (int)EnemyStates.Running);
+
+    }
+
     void Start()
     {
-      
+       // animator.SetInteger("State", 2);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        //animator.SetInteger("State", 2);
 
     }
 }

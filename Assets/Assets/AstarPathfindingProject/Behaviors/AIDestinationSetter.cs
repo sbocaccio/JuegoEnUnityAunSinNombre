@@ -38,12 +38,7 @@ namespace Pathfinding {
 		private Vector3 patroling_pos;
 		public Timer patrol_timer;
 		public enemy_animator animations;
-		
-
-		
-
-
-
+		private float closeToStop = 8;
 		private float movementSize = 1; // It's value are only 1 or -1, 
 		IAstarAI ai;
 		
@@ -74,15 +69,13 @@ namespace Pathfinding {
 			patroling_pos = inicial_pos;
 			target = player_transform;
 			patrol_timer = new Timer(stop_time);
-			animations = new enemy_animator(animator, transform);
-
-
-
+			animations = gameObject.GetComponent<enemy_animator>();
 		}
 		private void AttackMode() {
-			ai.destination = target.position;
+			ai.destination = target.position;	
 		}
 		private void FlipSize() {
+
             if (patrol_vertical)
 			{
 				inicial_pos.y = inicial_pos.y + (movementSize * patrol_range);
@@ -94,16 +87,12 @@ namespace Pathfinding {
 				inicial_pos.x = inicial_pos.x + (movementSize * patrol_range);
 				movementSize = movementSize * -1;
 				ai.destination = inicial_pos;
-
-
 			}
 		}
 
 		private float Distance(Vector3 pos)
         {
 			return (Math.Abs(pos.x - transform.position.x) + Math.Abs(pos.y - transform.position.y));
-
-
 		}
 		/// <summary>Updates the AI's destination every frame</summary>
 		void Update () {
@@ -114,12 +103,19 @@ namespace Pathfinding {
 				if ((Distance(target.position) < lookRadius))
 				{
 					//Must change if it was idle.
-					animations.FinishIdle();
-
+					animations.StopIdle();
 					AttackMode();
-					animations.TurnSide(target.position);
-					animations.StartRunning();
-				
+
+					//Check if we are so close to the Player that we have to stop. 
+					if (Distance(target.position) < closeToStop)
+					{
+						animations.StartOnGuard();
+						
+					}
+                    else {
+						animations.TurnSide(target.position);
+						animations.StartRunning();
+					}
 				}
 				else
 				{
@@ -132,7 +128,7 @@ namespace Pathfinding {
 						if (patrol_timer.timeOver())
                         {
 							FlipSize();
-							animations.FinishIdle();
+							animations.StopIdle();
 						}
 
 					}

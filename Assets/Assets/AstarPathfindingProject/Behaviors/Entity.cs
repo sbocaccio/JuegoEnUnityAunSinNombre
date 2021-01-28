@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Entity : MonoBehaviour, IKillable
 {
-    [SerializeField]
-    private Image healthBar;
+    //[SerializeField]
+    //private Image healthBar;
     [SerializeField]
     private int m_Health = 100;
     public int GetHealth()
@@ -22,7 +22,7 @@ public class Entity : MonoBehaviour, IKillable
     {
        
         m_Health -= damage;
-        healthBar.fillAmount = m_Health / 100f;
+       // healthBar.fillAmount = m_Health / 100f;
     }
 
     protected void EntityUpdate()

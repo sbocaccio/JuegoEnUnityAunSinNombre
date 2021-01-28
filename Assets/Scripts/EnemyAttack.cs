@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
+    
     [SerializeField]
     private GameObject playerObject;
     private Transform player_transform;
@@ -25,7 +26,7 @@ public class EnemyAttack : MonoBehaviour
         player_script = playerObject.GetComponent<Player>();
         player_transform = GameObject.FindGameObjectWithTag("Player").transform;
         player_defence = player_script.GetComponent<Defence>();
-
+       
     }
 
     // Update is called once per frame
