@@ -74,6 +74,10 @@ public class enemy_animator : MonoBehaviour
 
     }
 
+    public void StartReadyToAttack()
+    {
+        animator.SetInteger("State", (int)EnemyStates.ReadyToAttack);
+    }
     void Start()
     {
        // animator.SetInteger("State", 2);
