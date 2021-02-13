@@ -1,0 +1,189 @@
+[33mcommit 46c1e4c0058ed48a2ad3c35f8084682b3d7ca78b[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/Animations[m[33m, [m[1;32mAnimations[m[33m)[m
+Author: sebasbocaccio <sebastianbocaccio16@gmail.com>
+Date:   Thu Jan 28 16:10:09 2021 -0300
+
+    Start using gameObject.animation instead of the things previously done. Add OnGuard animation. Put/Organice the files of animation putting them sorted in their respective folders
+
+[33mcommit 67fba48f051f8ad7ab0d807be2ab09e825e3fa24[m
+Author: sebasbocaccio <sebastianbocaccio16@gmail.com>
+Date:   Thu Jan 21 17:17:18 2021 -0300
+
+    Add Enemy_animation class and add running and idle animations
+
+[33mcommit 1efed4a1ff1e743ed6ebaba9476dc69624fdb772[m
+Author: sebasbocaccio <sebastianbocaccio16@gmail.com>
+Date:   Wed Jan 20 21:49:57 2021 -0300
+
+    Add running animation enemy.
+
+[33mcommit 592be3ba7b6ef56ff971417b15d55f6683006d79[m[33m ([m[1;31morigin/Mechanics[m[33m, [m[1;32mMechanics[m[33m)[m
+Author: sebasbocaccio <sebastianbocaccio16@gmail.com>
+Date:   Thu Jan 14 12:19:09 2021 -0800
+
+    Add the posibility of two types of patrols ( Horizontal and Vertical )
+
+[33mcommit ec7f8937b15ee554350150c4d5d8d7e6069fb9e2[m
+Author: sebasbocaccio <sebastianbocaccio16@gmail.com>
+Date:   Thu Jan 14 11:50:26 2021 -0800
+
+    Add Patrol for enemies and Timer class
+
+[33mcommit e50ac31f1348919022c5c5d0f8bf5ac6354ac341[m
+Author: sebasbocaccio <sebastianbocaccio16@gmail.com>
+Date:   Sun Jan 10 08:50:26 2021 -0800
+
+    Add some prites, change image of Health Bar and started with enemy Patrol (inconcluse)
+
+[33mcommit bd65074ce33b1946a53e0ab4631e230d4d391bed[m
+Author: sebasbocaccio <sebastianbocaccio16@gmail.com>
+Date:   Thu Jan 7 16:11:23 2021 -0800
+
+    Add vulnerability when defencing on the wrong size
+
+[33mcommit 7eb5d49d8a11f6796990ae83e8e5b91d4d120240[m
+Author: sebasbocaccio <sebastianbocaccio16@gmail.com>
+Date:   Thu Jan 7 14:44:32 2021 -0800
+
+    Add velocity punishment when player moves in defence mode and rotate player sprite also in defence.
+
+[33mcommit 240d199b226491c6e560813e25b1ed99aac0db2a[m
+Author: sebasbocaccio <sebastianbocaccio16@gmail.com>
+Date:   Wed Dec 30 19:23:32 2020 -0800
+
+    Fix minor bugs from Defence mode. Sometimes the player stopped the defence animaiton before unpressing de button
+
+[33mcommit 471cb012fb36c9de5823cd92d6a08985d9f8cfd3[m
+Author: sebasbocaccio <sebastianbocaccio16@gmail.com>
+Date:   Wed Dec 30 17:52:18 2020 -0800
+
+    Add basic defence mode
+
+[33mcommit 067c860eada83e63d43c7fd3304d15d779cbc48f[m
+Author: sebasbocaccio <sebastianbocaccio16@gmail.com>
+Date:   Sat Dec 26 16:40:09 2020 -0800
+
+    Add look radius for enemy. If dist player < value, it starts to follow it
+
+[33mcommit 51f6e9009ec20bfac13bd4e5b06385774142078e[m
+Author: sebasbocaccio <sebastianbocaccio16@gmail.com>
+Date:   Sat Dec 26 15:15:39 2020 -0800
+
+    Add some sprites for tilemaps and camara follows player
+
+[33mcommit 3723dd758fbf7b0df76ac9c1e4acf2abbb05f927[m
+Author: sebasbocaccio <sebastianbocaccio16@gmail.com>
+Date:   Fri Dec 25 16:01:36 2020 -0800
+
+    Add cooldown in attacks
+
+[33mcommit 841dd557f887e8fcf82a3a8d1cf08faf0f10c40c[m[33m ([m[1;31morigin/changEnvironment[m[33m, [m[1;32mchangEnvironment[m[33m)[m
+Author: sebasbocaccio <sebastianbocaccio16@gmail.com>
+Date:   Sun Dec 20 16:31:46 2020 -0800
+
+    Add some basic layers. Still needed to fix health bar because is doesn't appear above background
+
+[33mcommit 2b36b284626b0afb98c574ad656d897b99ff4690[m
+Author: sebasbocaccio <sebastianbocaccio16@gmail.com>
+Date:   Sun Dec 20 15:33:05 2020 -0800
+
+    Add Gon skin for main caracter, tilemaps for floor and wall and fix little buf from NavMesh
+
+[33mcommit a589ea9d174aca2614652eac4216c8419f802334[m[33m ([m[1;31morigin/overall_changes[m[33m, [m[1;32moverall_changes[m[33m)[m
+Author: sebasbocaccio <sebastianbocaccio16@gmail.com>
+Date:   Sun Dec 6 14:59:11 2020 -0800
+
+    I add more tan one significant change. 1: Changed style of life bar.  2: Created animation of main caracter when walking and kicking. 3: Put a sprite in Enemy 4) Complete pathfindings basic
+
+[33mcommit 41a008feca5a164c7c9047332fbf61c817d90025[m[33m ([m[1;32mspriteKick[m[33m, [m[1;32mpathFinding[m[33m)[m
+Author: sebasbocaccio <sebastianbocaccio16@gmail.com>
+Date:   Sun Dec 6 07:31:24 2020 -0800
+
+    Add sprites of idle and kick. When player press space the player executes kick animation.
+
+[33mcommit 24ededf0c9294f340889a015ccd6e755c484aa93[m[33m ([m[1;31morigin/healthBar[m[33m, [m[1;32mhealthBar[m[33m)[m
+Merge: 0a1c412 30d5ce8
+Author: sebasbocaccio <sebastianbocaccio16@gmail.com>
+Date:   Sat Dec 5 16:19:49 2020 -0800
+
+    Add Health bar. The bar reduces its size when health is reduced
+
+[33mcommit 0a1c4124708a203a313934e7e2196d70d37a1146[m
+Author: sebasbocaccio <sebastianbocaccio16@gmail.com>
+Date:   Sat Dec 5 14:48:25 2020 -0800
+
+    Add sprite for maincaracter
+
+[33mcommit 30d5ce8c225b22b98e346a7701461e670c2b35c3[m
+Merge: f829173 2b23ef9
+Author: sebasbocaccio <49654878+sebasbocaccio@users.noreply.github.com>
+Date:   Sat Dec 5 14:42:41 2020 -0800
+
+    Merge pull request #3 from ChepChaf/add-hit-action
+    
+    Add Attack
+
+[33mcommit 2b23ef9e26c9343b78a1437ea30abe8bef7447e7[m[33m ([m[1;31morigin/add-hit-action[m[33m)[m
+Author: Cezar Azevedo de Faveri <cazevedodefaveri@gmail.com>
+Date:   Sat Dec 5 19:37:24 2020 -0300
+
+    Update scene
+
+[33mcommit d76cf7c1c449783f9911b7a709a88ca7c1e6cfb9[m
+Author: Cezar Azevedo de Faveri <cazevedodefaveri@gmail.com>
+Date:   Sat Dec 5 19:19:26 2020 -0300
+
+    Add Attack
+
+[33mcommit f8291735f0b9eb13b212ed5b6a16ecea8db607c4[m
+Merge: 05ee7bf 2999892
+Author: Cezar Azevedo de Faveri <cezar@properati.com>
+Date:   Wed Dec 2 21:21:53 2020 -0300
+
+    Merge pull request #2 from ChepChaf/add-floor
+    
+    Save scene
+
+[33mcommit 299989240edf8a3e609f722f5306537b906dde45[m
+Author: Cezar Azevedo de Faveri <cazevedodefaveri@gmail.com>
+Date:   Wed Dec 2 21:20:10 2020 -0300
+
+    Save scene
+
+[33mcommit 05ee7bf70794e9d58513fe22e89e5c680b023945[m
+Merge: 5ac8112 7d70b00
+Author: Cezar Azevedo de Faveri <cezar@properati.com>
+Date:   Wed Dec 2 21:12:30 2020 -0300
+
+    Merge pull request #1 from ChepChaf/add-floor
+    
+    Add Floor Tilemap
+
+[33mcommit 7d70b00d7a045384cde3fcfac2d565bab0929d52[m
+Author: Cezar Azevedo de Faveri <cazevedodefaveri@gmail.com>
+Date:   Wed Dec 2 21:06:52 2020 -0300
+
+    Add Floor Tilemap
+
+[33mcommit 5ac81128ba82d62d88295b557f2d1300cb086aad[m
+Author: sebasbocaccio <sebastianbocaccio16@gmail.com>
+Date:   Wed Dec 2 15:57:49 2020 -0800
+
+    Add SampleScene
+
+[33mcommit 43d80c48436ca166a3f2d9bdaca16bfa4e525ab9[m
+Author: sebasbocaccio <sebastianbocaccio16@gmail.com>
+Date:   Wed Dec 2 15:52:12 2020 -0800
+
+    Add basic movement of maincaracter
+
+[33mcommit fd7710d37c223449b0d72a4474286c007668cf67[m
+Author: Cezar Azevedo de Faveri <cazevedodefaveri@gmail.com>
+Date:   Wed Dec 2 20:46:51 2020 -0300
+
+    Add Floor Sprite
+
+[33mcommit d49834ad733c398b765d550f6b51eacbe3cd89c3[m
+Author: Cezar Azevedo de Faveri <cazevedodefaveri@gmail.com>
+Date:   Wed Dec 2 22:46:16 2020 -0300
+
+    Initial commit

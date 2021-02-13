@@ -107,7 +107,12 @@ namespace Pathfinding {
 					AttackMode();
 
 					//Check if we are so close to the Player that we have to stop. 
-					if (Distance(target.position) < closeToStop)
+					if (Distance(target.position) < 4)
+                    {
+						animations.StartReadyToAttack();
+                    }
+					
+					else if (Distance(target.position) < closeToStop)
 					{
 						animations.StartOnGuard();
 						
