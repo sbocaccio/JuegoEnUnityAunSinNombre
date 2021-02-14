@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<<< HEAD:Assets/Assets/AstarPathfindingProject/OwnScripts/Patrol.cs.meta
 guid: a6eccdc210029c6409e0242220b0b76b
+========
+guid: 46f1acb4228d8fd4d9231c3866567ba2
+>>>>>>>> master:Assets/Assets/AstarPathfindingProject/Behaviors/Patrol.cs.meta
+=======
+guid: a6eccdc210029c6409e0242220b0b76b
+>>>>>>> master
 timeCreated: 1495286303
 licenseType: Pro
 MonoImporter:
