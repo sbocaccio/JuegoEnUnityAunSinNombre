@@ -20,7 +20,7 @@ namespace Pathfinding {
 		/// <summary>The object that the AI should move to</summary>
 		/// 
 
-		
+		private EnemyAttack enemy_attack;
 		public Animator animator;
 		[SerializeField]
 		private bool patrol_horizontal = false;
@@ -70,10 +70,15 @@ namespace Pathfinding {
 			target = player_transform;
 			patrol_timer = new Timer(stop_time);
 			animations = gameObject.GetComponent<enemy_animator>();
+			enemy_attack = gameObject.GetComponent<EnemyAttack>();
 		}
 		private void AttackMode() {
 			ai.destination = target.position;	
 		}
+		private void Notmove()
+        {
+			ai.destination = transform.position;
+        }
 		private void FlipSize() {
 
             if (patrol_vertical)
@@ -105,15 +110,20 @@ namespace Pathfinding {
 					//Must change if it was idle.
 					animations.StopIdle();
 					AttackMode();
-
+					
 					//Check if we are so close to the Player that we have to stop. 
 					if (Distance(target.position) < 4)
                     {
+						if (Distance(target.position) <= 3){Notmove();}
+						animations.TurnSide(target.position);
 						animations.StartReadyToAttack();
-                    }
+						enemy_attack.attack();
+
+					}
 					
 					else if (Distance(target.position) < closeToStop)
 					{
+						animations.TurnSide(target.position);
 						animations.StartOnGuard();
 						
 					}

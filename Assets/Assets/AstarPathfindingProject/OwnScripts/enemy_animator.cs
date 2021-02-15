@@ -16,7 +16,7 @@ public class enemy_animator : MonoBehaviour
 {
     // Start is called before the first frame update
     public Animator animator;
-
+    int AttackAnimation = 1; // Values are 1 o -1 depend on which animation should do 
     
 
     // Flip where the player is looking depending on where is the target.
@@ -78,6 +78,19 @@ public class enemy_animator : MonoBehaviour
     {
         animator.SetInteger("State", (int)EnemyStates.ReadyToAttack);
     }
+
+    public void StartAttacking()
+    {
+        animator.SetInteger("State", (int)EnemyStates.Attacking);
+        animator.SetInteger("AttackNumber", AttackAnimation);
+
+        //In the next attack, I'll show the other one
+        AttackAnimation = AttackAnimation * -1;
+        GameObject jugador = GameObject.FindGameObjectWithTag("Player");
+        jugador.GetComponent<Player>().TakeDamage(5);
+    }
+    
+
     void Start()
     {
        // animator.SetInteger("State", 2);
