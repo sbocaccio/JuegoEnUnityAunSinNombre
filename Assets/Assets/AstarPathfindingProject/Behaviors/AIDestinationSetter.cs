@@ -40,7 +40,9 @@ namespace Pathfinding {
 		public enemy_animator animations;
 		private float closeToStop = 8;
 		private float movementSize = 1; // It's value are only 1 or -1, 
+		private float maxSpeedAUX;
 		IAstarAI ai;
+		bool moving = true;
 		
 		void onDrawGizmosSelected()
         {
@@ -61,7 +63,7 @@ namespace Pathfinding {
 		void OnDisable () {
 			if (ai != null) ai.onSearchPath -= Update;
 		}
-
+		
 		
 		void Start()
 		{
@@ -77,8 +79,19 @@ namespace Pathfinding {
 		}
 		private void Notmove()
         {
-			ai.destination = transform.position;
-        }
+
+			AIPath aipath = gameObject.GetComponent<AIPath>();
+			aipath.enabled = false;
+			moving = false;
+			
+
+		}
+		private void MoveAgain()
+        {
+			AIPath aipath = gameObject.GetComponent<AIPath>();
+			aipath.enabled = true;
+			moving = true;
+		}
 		private void FlipSize() {
 
             if (patrol_vertical)
@@ -114,25 +127,31 @@ namespace Pathfinding {
 					//Check if we are so close to the Player that we have to stop. 
 					if (Distance(target.position) < 4)
                     {
-						if (Distance(target.position) <= 3){Notmove();}
-						animations.TurnSide(target.position);
-						animations.StartReadyToAttack();
-						enemy_attack.attack();
-
+						// Range of attack 
+						if (Distance(target.position) <= 3)
+						{
+							Notmove();
+							animations.TurnSide(target.position);
+							animations.StartReadyToAttack();
+							enemy_attack.attack();
+						}
 					}
-					
+					// When the player is close, the enemy stops running and starts walking "OnGuard" 
 					else if (Distance(target.position) < closeToStop)
 					{
+						if (!moving) { MoveAgain(); }
 						animations.TurnSide(target.position);
 						animations.StartOnGuard();
 						
 					}
+					// Range of start running
                     else {
+						if (!moving) { MoveAgain(); }
 						animations.TurnSide(target.position);
 						animations.StartRunning();
 					}
 				}
-				else
+				else // Enemy can't see the player, so the enemy patrols
 				{
 					ai.destination = inicial_pos;
 					if (Distance(inicial_pos) < 4)
