@@ -86,8 +86,7 @@ public class enemy_animator : MonoBehaviour
 
         //In the next attack, I'll show the other one
         AttackAnimation = AttackAnimation * -1;
-        GameObject jugador = GameObject.FindGameObjectWithTag("Player");
-        jugador.GetComponent<Player>().TakeDamage(5);
+       
     }
     
 
