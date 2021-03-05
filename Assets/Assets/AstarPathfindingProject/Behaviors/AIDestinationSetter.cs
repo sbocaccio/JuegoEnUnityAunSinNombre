@@ -20,7 +20,7 @@ namespace Pathfinding {
 		/// <summary>The object that the AI should move to</summary>
 		/// 
 
-		
+		private EnemyAttack enemy_attack;
 		public Animator animator;
 		[SerializeField]
 		private bool patrol_horizontal = false;
@@ -40,7 +40,9 @@ namespace Pathfinding {
 		public enemy_animator animations;
 		private float closeToStop = 8;
 		private float movementSize = 1; // It's value are only 1 or -1, 
+		private float maxSpeedAUX;
 		IAstarAI ai;
+		bool moving = true;
 		
 		void onDrawGizmosSelected()
         {
@@ -61,7 +63,7 @@ namespace Pathfinding {
 		void OnDisable () {
 			if (ai != null) ai.onSearchPath -= Update;
 		}
-
+		
 		
 		void Start()
 		{
@@ -70,9 +72,25 @@ namespace Pathfinding {
 			target = player_transform;
 			patrol_timer = new Timer(stop_time);
 			animations = gameObject.GetComponent<enemy_animator>();
+			enemy_attack = gameObject.GetComponent<EnemyAttack>();
 		}
 		private void AttackMode() {
 			ai.destination = target.position;	
+		}
+		private void Notmove()
+        {
+
+			AIPath aipath = gameObject.GetComponent<AIPath>();
+			aipath.enabled = false;
+			moving = false;
+			
+
+		}
+		private void MoveAgain()
+        {
+			AIPath aipath = gameObject.GetComponent<AIPath>();
+			aipath.enabled = true;
+			moving = true;
 		}
 		private void FlipSize() {
 
@@ -105,24 +123,35 @@ namespace Pathfinding {
 					//Must change if it was idle.
 					animations.StopIdle();
 					AttackMode();
-
+					
 					//Check if we are so close to the Player that we have to stop. 
 					if (Distance(target.position) < 4)
                     {
-						animations.StartReadyToAttack();
-                    }
-					
+						// Range of attack 
+						if (Distance(target.position) <= 3)
+						{
+							Notmove();
+							animations.TurnSide(target.position);
+							animations.StartReadyToAttack();
+							enemy_attack.attack();
+						}
+					}
+					// When the player is close, the enemy stops running and starts walking "OnGuard" 
 					else if (Distance(target.position) < closeToStop)
 					{
+						if (!moving) { MoveAgain(); }
+						animations.TurnSide(target.position);
 						animations.StartOnGuard();
 						
 					}
+					// Range of start running
                     else {
+						if (!moving) { MoveAgain(); }
 						animations.TurnSide(target.position);
 						animations.StartRunning();
 					}
 				}
-				else
+				else // Enemy can't see the player, so the enemy patrols
 				{
 					ai.destination = inicial_pos;
 					if (Distance(inicial_pos) < 4)

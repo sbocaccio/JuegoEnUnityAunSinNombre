@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField] 
     private GameObject playerObject;
     private Transform player_transform;
     Player player_script;
@@ -17,7 +17,7 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField]
     private float coolDown = 1;
     private float coolDownTimer = 0;
-
+    enemy_animator animations;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,29 +25,37 @@ public class EnemyAttack : MonoBehaviour
         player_script = playerObject.GetComponent<Player>();
         player_transform = GameObject.FindGameObjectWithTag("Player").transform;
         player_defence = player_script.GetComponent<Defence>();
+        animations = gameObject.GetComponent<enemy_animator>();
 
     }
 
     // Update is called once per frame
+    public void attack()
+    {
+
+        // Attack if in range
+        dist = Vector2.Distance(player_transform.position, transform.position);
+        if (dist < howclose && (!player_defence.defenseActivated() ||
+           (player_defence.defenseSize() < 0 && ((player_transform.position.x - transform.position.x < 0)) || //Attack from behind
+           (player_defence.defenseSize() > 0 && (player_transform.position.x - transform.position.x > 0)))))
+        {
+            if (coolDownTimer == 0f)
+            {
+                animations.StartAttacking();
+                Debug.Log("Saco dano");
+                player_script.TakeDamage(5);
+
+                coolDownTimer = coolDown;
+            }
+        }
+    }
+
+
     public void Update()
+
     {
         // When MainCaracter dies, the game should stop (or not, depend on designer decision). This is only safe code just in case.  
-        if (player_transform != null)
-        {
-            // Attack if in range
-            dist = Vector2.Distance(player_transform.position, transform.position);
-            if (dist < howclose && (!player_defence.defenseActivated() || 
-               (player_defence.defenseSize() < 0 && ((player_transform.position.x - transform.position.x < 0)) || //Attack from behind
-               (player_defence.defenseSize() > 0 && (player_transform.position.x - transform.position.x > 0)))))
-            {
-                if (coolDownTimer == 0f)
-                {
-                    player_script.TakeDamage(5);
-                    
-                    coolDownTimer = coolDown;
-                }    
-            }
-
+        
 
             coolDownTimer -= Time.deltaTime;
             if (coolDownTimer < 0)
@@ -56,8 +64,8 @@ public class EnemyAttack : MonoBehaviour
             }
 
 
-        }
-
     }
+
+    
 }
 
