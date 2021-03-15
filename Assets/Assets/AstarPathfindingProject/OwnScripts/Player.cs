@@ -8,6 +8,9 @@ public class Player : Entity
     [SerializeField]
     private Animator animator;
 
+    public AudioManager audioManager;
+
+
     [SerializeField]
     private float coolDown = 1;
     private float coolDownTimer = 0;
@@ -30,6 +33,7 @@ public class Player : Entity
         {
            
             Attack();
+            audioManager.Play("Player_Punch1");
             animator.SetTrigger("Punch");
             coolDownTimer = coolDown;
         }

@@ -20,6 +20,7 @@ namespace Pathfinding {
 		/// <summary>The object that the AI should move to</summary>
 		/// 
 
+		
 		private EnemyAttack enemy_attack;
 		public Animator animator;
 		[SerializeField]
@@ -38,7 +39,7 @@ namespace Pathfinding {
 		private Vector3 patroling_pos;
 		public Timer patrol_timer;
 		public enemy_animator animations;
-		private float closeToStop = 8;
+		private float closeToStop = 8.5f;
 		private float movementSize = 1; // It's value are only 1 or -1, 
 		private float maxSpeedAUX;
 		IAstarAI ai;
@@ -125,17 +126,16 @@ namespace Pathfinding {
 					AttackMode();
 					
 					//Check if we are so close to the Player that we have to stop. 
-					if (Distance(target.position) < 4)
-                    {
-						// Range of attack 
-						if (Distance(target.position) <= 3)
-						{
-							Notmove();
-							animations.TurnSide(target.position);
-							animations.StartReadyToAttack();
-							enemy_attack.attack();
-						}
+					
+					// Range of attack 
+					if (Distance(target.position) <= 3)
+					{
+						Notmove();
+						animations.TurnSide(target.position);
+						animations.StartReadyToAttack();
+						enemy_attack.attack();
 					}
+					
 					// When the player is close, the enemy stops running and starts walking "OnGuard" 
 					else if (Distance(target.position) < closeToStop)
 					{
