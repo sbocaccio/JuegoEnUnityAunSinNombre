@@ -33,7 +33,7 @@ public class Player : Entity
         {
            
             Attack();
-            audioManager.Play("Punch1");
+            audioManager.Play("Player_Punch1");
             animator.SetTrigger("Punch");
             coolDownTimer = coolDown;
         }

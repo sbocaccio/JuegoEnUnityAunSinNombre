@@ -17,7 +17,8 @@ public class enemy_animator : MonoBehaviour
     // Start is called before the first frame update
     public Animator animator;
     int AttackAnimation = 1; // Values are 1 o -1 depend on which animation should do 
-    
+    public AudioManager audioMananer;
+
 
     // Flip where the player is looking depending on where is the target.
     public void TurnSide(Vector3 target)
@@ -83,7 +84,11 @@ public class enemy_animator : MonoBehaviour
     {
         animator.SetInteger("State", (int)EnemyStates.Attacking);
         animator.SetInteger("AttackNumber", AttackAnimation);
-
+       
+       
+        if (AttackAnimation == 1) audioMananer.Play("Enemy_Punch1");
+        else audioMananer.Play("Enemy_Punch2");
+        
         //In the next attack, I'll show the other one
         AttackAnimation = AttackAnimation * -1;
        
