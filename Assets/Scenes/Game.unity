@@ -287,14 +287,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 6375209907567970970, guid: e5bbd0dfa1d4be04aaa32de8a8961478,
+    type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 1
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 1
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!212 &398242861
@@ -364,7 +365,7 @@ RectTransform:
   m_GameObject: {fileID: 398242859}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1375, y: 0.85, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 181522003}
   m_RootOrder: 0
@@ -34945,6 +34946,7 @@ MonoBehaviour:
   healthBar: {fileID: 1051358276}
   m_Health: 100
   animator: {fileID: 617996867}
+  audioManager: {fileID: 1194522817}
   coolDown: 0.2
   attackRangeTransform: {fileID: 1489676666}
   attackRange: 0.5
@@ -39065,11 +39067,38 @@ MonoBehaviour:
   sounds:
   - name: BackGroundMusic
     clip: {fileID: 8300000, guid: add86a52e32078c4cabe0c8d5a305d6e, type: 3}
-    volume: 1
+    volume: 0.419
     volumeVariance: 1
     pitch: 1
     pitchVariance: 0
     loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Player_Punch1
+    clip: {fileID: 8300000, guid: 94eab25efa717b145a3421975344c308, type: 3}
+    volume: 1
+    volumeVariance: 1
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Enemy_Punch1
+    clip: {fileID: 8300000, guid: 5068f108a6982904394b4f621967a897, type: 3}
+    volume: 1
+    volumeVariance: 1
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Enemy_Punch2
+    clip: {fileID: 8300000, guid: e0f29bddec6df074db3d8a871c45e785, type: 3}
+    volume: 1
+    volumeVariance: 1
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
 --- !u!4 &1194522818
@@ -39178,6 +39207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1430750923}
+  audioMananer: {fileID: 1194522817}
 --- !u!95 &1430750923
 Animator:
   serializedVersion: 3
@@ -40121,6 +40151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1960904062}
+  audioMananer: {fileID: 1194522817}
 --- !u!95 &1960904062
 Animator:
   serializedVersion: 3

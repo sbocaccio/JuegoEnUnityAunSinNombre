@@ -23,6 +23,7 @@ public class Entity : MonoBehaviour, IKillable
        
         m_Health -= damage;
         healthBar.fillAmount = m_Health / 100f;
+        
     }
 
     protected void EntityUpdate()
