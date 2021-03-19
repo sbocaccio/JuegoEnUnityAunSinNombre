@@ -2,8 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class Entity : MonoBehaviour, IKillable
 {
+    [SerializeField]
+    private bool drops;
+    public GameObject thedrop;
+    public Transform dropPoint;
+    static int ENEMY_LAYER = 8;
     [SerializeField]
     private Image healthBar;
     [SerializeField]
@@ -30,7 +36,13 @@ public class Entity : MonoBehaviour, IKillable
     {
         if (GetHealth() <= 0)
         {
+            if(gameObject.layer == ENEMY_LAYER)
+            {
+                if (drops) { Instantiate(thedrop, dropPoint.position, dropPoint.rotation); }
+                Debug.Log("daleee");
+            }
             Kill();
+
         }
     }
 }
