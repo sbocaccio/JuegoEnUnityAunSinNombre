@@ -21,8 +21,8 @@ TagManager:
   - Walls
   - Background
   - Health_Bar
-  - 
-  - 
+  - PauseMenu
+  - Ui
   - 
   - 
   - 
@@ -53,4 +53,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 3446839263
     locked: 0

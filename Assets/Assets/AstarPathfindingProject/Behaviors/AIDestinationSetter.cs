@@ -20,7 +20,7 @@ namespace Pathfinding {
 		/// <summary>The object that the AI should move to</summary>
 		/// 
 
-		
+
 		private EnemyAttack enemy_attack;
 		public Animator animator;
 		[SerializeField]
@@ -30,7 +30,7 @@ namespace Pathfinding {
 		[SerializeField]
 		private float stop_time = 4;
 		[SerializeField]
-		private Transform player_transform; 
+		private Transform player_transform;
 		public float lookRadius = 10f;
 		[SerializeField]
 		private int patrol_range = 14;
@@ -44,15 +44,15 @@ namespace Pathfinding {
 		private float maxSpeedAUX;
 		IAstarAI ai;
 		bool moving = true;
-		
+		Timer attack_preparation;
 		void onDrawGizmosSelected()
-        {
+		{
 
 			Gizmos.color = Color.red;
 			Gizmos.DrawSphere(transform.position, lookRadius);
-        }
+		}
 
-			void OnEnable () {
+		void OnEnable() {
 			ai = GetComponent<IAstarAI>();
 			// Update the destination right before searching for a path as well.
 			// This is enough in theory, but this script will also update the destination every
@@ -61,11 +61,11 @@ namespace Pathfinding {
 			if (ai != null) ai.onSearchPath += Update;
 		}
 
-		void OnDisable () {
+		void OnDisable() {
 			if (ai != null) ai.onSearchPath -= Update;
 		}
-		
-		
+
+
 		void Start()
 		{
 			inicial_pos = transform.position;
@@ -74,35 +74,36 @@ namespace Pathfinding {
 			patrol_timer = new Timer(stop_time);
 			animations = gameObject.GetComponent<enemy_animator>();
 			enemy_attack = gameObject.GetComponent<EnemyAttack>();
+			attack_preparation = new Timer(0.4f);
 		}
 		private void AttackMode() {
-			ai.destination = target.position;	
+			ai.destination = target.position;
 		}
 		private void Notmove()
-        {
+		{
 
 			AIPath aipath = gameObject.GetComponent<AIPath>();
 			aipath.enabled = false;
 			moving = false;
-			
+
 
 		}
 		private void MoveAgain()
-        {
+		{
 			AIPath aipath = gameObject.GetComponent<AIPath>();
 			aipath.enabled = true;
 			moving = true;
 		}
 		private void FlipSize() {
 
-            if (patrol_vertical)
+			if (patrol_vertical)
 			{
 				inicial_pos.y = inicial_pos.y + (movementSize * patrol_range);
 				movementSize = movementSize * -1;
 				ai.destination = inicial_pos;
 			}
 			else if (patrol_horizontal)
-            {
+			{
 				inicial_pos.x = inicial_pos.x + (movementSize * patrol_range);
 				movementSize = movementSize * -1;
 				ai.destination = inicial_pos;
@@ -110,11 +111,11 @@ namespace Pathfinding {
 		}
 
 		private float Distance(Vector3 pos)
-        {
+		{
 			return (Math.Abs(pos.x - transform.position.x) + Math.Abs(pos.y - transform.position.y));
 		}
 		/// <summary>Updates the AI's destination every frame</summary>
-		void Update () {
+		void Update() {
 			// 
 			if (target != null && ai != null)
 			{
@@ -124,28 +125,29 @@ namespace Pathfinding {
 					//Must change if it was idle.
 					animations.StopIdle();
 					AttackMode();
-					
+
 					//Check if we are so close to the Player that we have to stop. 
-					
+
 					// Range of attack 
 					if (Distance(target.position) <= 3)
 					{
 						Notmove();
 						animations.TurnSide(target.position);
 						animations.StartReadyToAttack();
-						enemy_attack.attack();
+						if (attack_preparation.timeOver()) enemy_attack.attack();
 					}
-					
+
 					// When the player is close, the enemy stops running and starts walking "OnGuard" 
-					else if (Distance(target.position) < closeToStop)
+					else if ((Distance(target.position) < closeToStop))
 					{
+						attack_preparation.setTimer();
 						if (!moving) { MoveAgain(); }
 						animations.TurnSide(target.position);
 						animations.StartOnGuard();
-						
 					}
 					// Range of start running
-                    else {
+					else
+					{
 						if (!moving) { MoveAgain(); }
 						animations.TurnSide(target.position);
 						animations.StartRunning();
@@ -160,18 +162,22 @@ namespace Pathfinding {
 						patrol_timer.setTimer(); // Only set if it wasn't set before.
 												 //It's capable of start again when the time counter is equal to cero.    		
 						if (patrol_timer.timeOver())
-                        {
+						{
 							FlipSize();
 							animations.StopIdle();
 						}
 
 					}
-                    else
-                    {
+					else
+					{
 						animations.StartWalking();
 					}
 				}
+
 			}
-		 }
+		}
 	}
 }
+
+
+
