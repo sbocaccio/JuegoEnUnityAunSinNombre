@@ -3,7 +3,6 @@ using System;
 using UnityEngine;
 
 
-
 // Important: If you want to play a sound, you don't have add it to the list, but 
 //also need to call AudioMagener.Play("NameOfTheSound) if you want to play it. 
 public class AudioManager : MonoBehaviour
@@ -50,6 +49,10 @@ public class AudioManager : MonoBehaviour
 		s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
 		s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
 
+        if (PauseMenu.GameIsPaused)
+        {
+			s.source.pitch += 0.5f;
+        }
 		s.source.Play();
 	}
 

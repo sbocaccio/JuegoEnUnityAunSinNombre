@@ -42,7 +42,6 @@ public class EnemyAttack : MonoBehaviour
             if (coolDownTimer == 0f)
             {
                 animations.StartAttacking();
-                Debug.Log("Saco dano");
                 player_script.TakeDamage(5);
 
                 coolDownTimer = coolDown;
