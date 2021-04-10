@@ -14,8 +14,8 @@ TagManager:
   - UI
   - 
   - 
-  - Enemies
-  - Player
+  - 
+  - 
   - InsideObjects
   - Floor
   - Walls
@@ -23,8 +23,8 @@ TagManager:
   - Health_Bar
   - PauseMenu
   - Ui
-  - 
-  - 
+  - Player
+  - Enemies
   - 
   - 
   - 

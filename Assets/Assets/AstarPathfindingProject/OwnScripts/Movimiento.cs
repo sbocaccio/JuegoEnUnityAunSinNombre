@@ -16,7 +16,7 @@ public class Movimiento : MonoBehaviour
     private float velocity_punishment = 0.5f;
     public float velocidad = 0.3f;
     bool lastMovementWasLeft;
-
+    bool notMoving;
     public int characterSpriteSize()
     {
         // Player looks right is positive, left is negative
@@ -27,25 +27,27 @@ public class Movimiento : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        bool lastMovementWasLeft = false;
+        bool notMoving = true;
     }
 
-    Vector3 ChangeScaleSize(float movementX, float movementY, Vector3 characterScale)
+    Vector3 SetCorrectAnimation(float movementX, float movementY, Vector3 characterScale)
     {
         if (movementX < 0)
         {
-            if (!lastMovementWasLeft)
+            if (!lastMovementWasLeft || notMoving)
             {
+                notMoving = false;
                 animator.SetInteger("Movement_x", 1);
                 characterScale.x = -characterScale.x;
             }
-            Debug.Log("Izquierda");
             lastMovementWasLeft = true;
         }
         else if (movementX > 0)
         {
-            if (lastMovementWasLeft)
+            if (lastMovementWasLeft || notMoving)
             {
+                notMoving = false;
                 animator.SetInteger("Movement_x", 1);
                 characterScale.x = -characterScale.x;
             }
@@ -53,6 +55,7 @@ public class Movimiento : MonoBehaviour
         }
         else
         {
+            notMoving = true;
             animator.SetInteger("Movement_x", 0);
         }
         return characterScale;
@@ -79,7 +82,7 @@ void move(float movementX,float  movementY) {
 
    
         Vector3 characterScale = transform.localScale;
-        transform.localScale = ChangeScaleSize( movementX, movementY, characterScale);
+        transform.localScale = SetCorrectAnimation( movementX, movementY, characterScale);
         move(movementX,movementY);
     }
 
