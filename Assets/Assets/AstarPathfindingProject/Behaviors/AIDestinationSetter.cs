@@ -45,6 +45,7 @@ namespace Pathfinding {
 		IAstarAI ai;
 		bool moving = true;
 		Timer attack_preparation;
+		public SoldierFieldOfView soldierView;
 		void onDrawGizmosSelected()
 		{
 
@@ -75,6 +76,7 @@ namespace Pathfinding {
 			animations = gameObject.GetComponent<enemy_animator>();
 			enemy_attack = gameObject.GetComponent<EnemyAttack>();
 			attack_preparation = new Timer(0.4f);
+			
 		}
 		private void AttackMode() {
 			ai.destination = target.position;
@@ -120,7 +122,7 @@ namespace Pathfinding {
 			if (target != null && ai != null)
 			{
 
-				if ((Distance(target.position) < lookRadius))
+				if ((Distance(target.position) < lookRadius) && soldierView.SeeingEnemy())
 				{
 					//Must change if it was idle.
 					animations.StopIdle();

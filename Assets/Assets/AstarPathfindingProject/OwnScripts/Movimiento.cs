@@ -37,9 +37,11 @@ public class Movimiento : MonoBehaviour
         {
             if (!lastMovementWasLeft || notMoving)
             {
+
+                if (!lastMovementWasLeft) { characterScale.x = -characterScale.x; }
                 notMoving = false;
                 animator.SetInteger("Movement_x", 1);
-                characterScale.x = -characterScale.x;
+                
             }
             lastMovementWasLeft = true;
         }
@@ -47,9 +49,11 @@ public class Movimiento : MonoBehaviour
         {
             if (lastMovementWasLeft || notMoving)
             {
+
+                if (lastMovementWasLeft) { characterScale.x = -characterScale.x; }
                 notMoving = false;
                 animator.SetInteger("Movement_x", 1);
-                characterScale.x = -characterScale.x;
+                
             }
             lastMovementWasLeft = false;
         }
