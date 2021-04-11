@@ -20,7 +20,7 @@ public class SoldierFieldOfView : FieldOfView {
 
 
     }
-    public void Start()
+    public new void Start()
     {
         seeingEnemy = false;
          setParentValues();  

@@ -29,7 +29,6 @@ namespace Pathfinding {
 		private bool patrol_vertical = true;
 		[SerializeField]
 		private float stop_time = 4;
-		[SerializeField]
 		private Transform player_transform;
 		public float lookRadius = 10f;
 		[SerializeField]
@@ -69,6 +68,7 @@ namespace Pathfinding {
 
 		void Start()
 		{
+			player_transform = GameObject.FindGameObjectWithTag("Player").transform;
 			inicial_pos = transform.position;
 			patroling_pos = inicial_pos;
 			target = player_transform;

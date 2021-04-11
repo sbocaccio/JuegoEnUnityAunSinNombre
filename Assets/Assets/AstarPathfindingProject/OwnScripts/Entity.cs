@@ -38,7 +38,7 @@ public class Entity : MonoBehaviour, IKillable
         {
             if(gameObject.layer == ENEMY_LAYER)
             {
-                if (drops) { Instantiate(thedrop, dropPoint.position, dropPoint.rotation); }
+                if (drops) {Instantiate(thedrop, dropPoint.position, dropPoint.rotation); }
             }
             Kill();
 

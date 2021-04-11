@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    [SerializeField] 
+
     private GameObject playerObject;
     private Transform player_transform;
     Player player_script;
@@ -22,15 +22,18 @@ public class EnemyAttack : MonoBehaviour
     void Start()
     {
         // Need some script of the main character to know things such as location, defenceMode. 
-        player_script = playerObject.GetComponent<Player>();
+
         player_transform = GameObject.FindGameObjectWithTag("Player").transform;
-        player_defence = player_script.GetComponent<Defence>();
         animations = gameObject.GetComponent<enemy_animator>();
+        playerObject = GameObject.FindGameObjectWithTag("Player");
+        player_script = playerObject.GetComponent<Player>();
+        player_defence = player_script.GetComponent<Defence>();
+
 
     }
 
-    // Update is called once per frame
-    public void attack()
+// Update is called once per frame
+public void attack()
     {
 
         // Attack if in range

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 enum EnemyStates
 {
     Idle = 0,
@@ -17,7 +17,7 @@ public class enemy_animator : MonoBehaviour
     // Start is called before the first frame update
     public Animator animator;
     int AttackAnimation = 1; // Values are 1 o -1 depend on which animation should do 
-    public AudioManager audioMananer;
+    public static AudioManager audioMananer;
 
 
     // Flip where the player is looking depending on where is the target.
@@ -97,7 +97,8 @@ public class enemy_animator : MonoBehaviour
 
     void Start()
     {
-       // animator.SetInteger("State", 2);
+        // animator.SetInteger("State", 2);
+       audioMananer = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
