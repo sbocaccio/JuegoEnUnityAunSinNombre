@@ -15,7 +15,7 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField]
     private float howclose;
     [SerializeField]
-    private float coolDown = 1;
+    private float coolDown = 3;
     private float coolDownTimer = 0;
     enemy_animator animations;
     // Start is called before the first frame update
