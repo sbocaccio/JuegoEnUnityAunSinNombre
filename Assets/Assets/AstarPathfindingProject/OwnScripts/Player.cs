@@ -28,10 +28,9 @@ public class Player : Entity
     {
         base.EntityUpdate();
 
-        // If player attacks, needs to be check is not in coolDown. 
+    
         if (Input.GetKeyDown(KeyCode.Space) && coolDownTimer == 0)
-        {
-           
+        {         
             Attack();
             audioManager.Play("Player_Punch1");
             animator.SetTrigger("Punch");
