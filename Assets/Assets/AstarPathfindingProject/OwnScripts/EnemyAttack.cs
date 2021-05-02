@@ -66,7 +66,7 @@ public void attack()
         foreach (Collider2D tar in targets)
         {
             if (tar.gameObject != this.gameObject) tar.GetComponent<Entity>().TakeDamage(4);
-            Debug.Log("Saque danio");
+
 
         }
     }
