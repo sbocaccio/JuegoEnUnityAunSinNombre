@@ -10,14 +10,10 @@ public class SoldierFieldOfView : FieldOfView {
     public override void TargetInView()
     {
         seeingEnemy = true;
-        Debug.Log("Veo");
-
     }
     public override void TargetNotInView()
     {
         seeingEnemy = false;
-        Debug.Log("No Veo");
-
 
     }
     public new void Start()

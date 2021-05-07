@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+
 
 public class Entity : MonoBehaviour, IKillable
 {
@@ -9,14 +9,16 @@ public class Entity : MonoBehaviour, IKillable
     private bool drops;
     public GameObject thedrop;
     public Transform dropPoint;
+    public BarScript lifeBar;
     static int ENEMY_LAYER = 8;
+   
     [SerializeField]
-    private Image healthBar;
-    [SerializeField]
-    private int m_Health = 100;
+    private int max_Health = 100;
+    private int current_Health = 100;
+
     public int GetHealth()
     {
-        return m_Health;
+        return current_Health;
     }
 
     public void Kill()
@@ -26,14 +28,13 @@ public class Entity : MonoBehaviour, IKillable
 
     public void TakeDamage (int damage)
     {
-       
-        m_Health -= damage;
-        healthBar.fillAmount = m_Health / 100f;
-        
+        current_Health = Mathf.Clamp(current_Health - damage, 0, max_Health);
+        lifeBar.UnfillBar(damage);
     }
-
+ 
     protected void EntityUpdate()
     {
+      
         if (GetHealth() <= 0)
         {
             if(gameObject.layer == ENEMY_LAYER)
@@ -44,4 +45,5 @@ public class Entity : MonoBehaviour, IKillable
 
         }
     }
+
 }

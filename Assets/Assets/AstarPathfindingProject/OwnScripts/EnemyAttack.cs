@@ -15,7 +15,7 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField]
     private float howclose;
     [SerializeField]
-    private float coolDown = 1;
+    private float coolDown = 3;
     private float coolDownTimer = 0;
     enemy_animator animations;
     // Start is called before the first frame update
@@ -31,7 +31,10 @@ public class EnemyAttack : MonoBehaviour
 
 
     }
-
+    private bool waitingAnimationToFinish()
+    {
+        return animations.stillOnAnimation();
+    }
 // Update is called once per frame
 public void attack()
     {
@@ -42,30 +45,39 @@ public void attack()
            (player_defence.defenseSize() < 0 && ((player_transform.position.x - transform.position.x < 0)) || //Attack from behind
            (player_defence.defenseSize() > 0 && (player_transform.position.x - transform.position.x > 0)))))
         {
-            if (coolDownTimer == 0f)
+            if (coolDownTimer == 0f && !waitingAnimationToFinish())
             {
                 animations.StartAttacking();
-                player_script.TakeDamage(5);
-
-                coolDownTimer = coolDown;
             }
         }
     }
 
 
+    void GiveDamageToTargetsInReach()
+    {
+       
+        Collider2D[] targetsInReach = gameObject.GetComponentInChildren<WeaponReach>().TargetsReaching();
+        giveDamage(targetsInReach);
+        coolDownTimer = coolDown;
+
+    }
+    void giveDamage(Collider2D[] targets)
+    {
+        foreach (Collider2D tar in targets)
+        {
+            if (tar.gameObject != this.gameObject) tar.GetComponent<Entity>().TakeDamage(4);
+
+
+        }
+    }
     public void Update()
 
     {
-        // When MainCaracter dies, the game should stop (or not, depend on designer decision). This is only safe code just in case.  
-        
-
             coolDownTimer -= Time.deltaTime;
             if (coolDownTimer < 0)
             {
                 coolDownTimer = 0;
             }
-
-
     }
 
     
