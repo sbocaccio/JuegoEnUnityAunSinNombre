@@ -127,13 +127,12 @@ namespace Pathfinding {
 					//Must change if it was idle.
 					animations.StopIdle();
 					AttackMode();
-					Debug.Log(Distance(target.position));
 					//Check if we are so close to the Player that we have to stop. 
 
 					// Range of attack 
 					if (Distance(target.position) <= 3)
 					{
-						Notmove();
+						//Notmove();
 						animations.TurnSide(target.position);
 						animations.StartReadyToAttack();
 						if (attack_preparation.timeOver()) enemy_attack.attack();

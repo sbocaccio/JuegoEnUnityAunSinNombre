@@ -30,21 +30,29 @@ public class Defence : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.X))
         {
-            animator.SetTrigger("Defence_activated");
-            DefenseMode = true;
-            defence_size = player_scale.characterSpriteSize();
-            // Debug.Log("Apreto X");
-            animator.ResetTrigger("Defence_desactivated");
+            ActivateDefense();
         }
         if (Input.GetKeyUp(KeyCode.X))
         {
-            animator.ResetTrigger("Defence_activated");
-            animator.SetTrigger("Defence_desactivated");
-            DefenseMode = false;
-            defence_size = 0;
-           // Debug.Log("No apreto X");
+            DesActivateDefense();
         }
-        //Defence_activated
+    }
+
+    void ActivateDefense()
+    {
+        animator.SetTrigger("Defence_activated");
+        DefenseMode = true;
+        defence_size = player_scale.characterSpriteSize();
+        animator.ResetTrigger("Defence_desactivated");
+    }
+
+    void DesActivateDefense()
+    {
+        animator.ResetTrigger("Defence_activated");
+        animator.SetTrigger("Defence_desactivated");
+        Debug.Log("Saque la defenza");
+        DefenseMode = false;
+        defence_size = 0;
     }
     public bool defenseActivated(){
         return DefenseMode;
@@ -58,8 +66,6 @@ public class Defence : MonoBehaviour
         if (DefenseMode)
         {
             defence_size = player_scale.characterSpriteSize();
-            
-
         }
     }
 
