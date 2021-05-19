@@ -141,8 +141,8 @@ public class Movimiento : MonoBehaviour
     [SerializeField]
     private float velocity_punishment = 0.5f;
     public float velocidad = 0.3f;
-    bool lastMovementWasLeft;
-    bool notMoving;
+    bool lastMovementWasLeft =false ;
+    bool notMoving = true;
     public int characterSpriteSize()
     {
         // Player looks right is positive, left is negative
@@ -153,42 +153,33 @@ public class Movimiento : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bool lastMovementWasLeft = false;
-        bool notMoving = true;
     }
 
-    Vector3 SetCorrectAnimation(float movementX, float movementY, Vector3 characterScale)
+    private Vector3 correctSide(float movementX, Vector3 characterScale)
     {
-        if (movementX < 0)
-        {
-            if (!lastMovementWasLeft || notMoving)
-            {
-
-                if (!lastMovementWasLeft) { characterScale.x = -characterScale.x; }
-                notMoving = false;
-                animator.SetInteger("Movement_x", 1);
-
-            }
-            lastMovementWasLeft = true;
+        if ( (lastMovementWasLeft && (movementX > 0)) || ( !lastMovementWasLeft && (movementX < 0))) {
+            characterScale.x = -characterScale.x;
         }
-        else if (movementX > 0)
+
+        if (movementX > 0) lastMovementWasLeft = false;
+        else if (movementX < 0) lastMovementWasLeft = true;
+
+        
+        return characterScale;
+    }
+
+    void  setCorrectAnimation(float movementX, float movementY)
+    {
+        if (movementX != 0 || movementY != 0 )
         {
-            if (lastMovementWasLeft || notMoving)
-            {
-
-                if (lastMovementWasLeft) { characterScale.x = -characterScale.x; }
-                notMoving = false;
-                animator.SetInteger("Movement_x", 1);
-
-            }
-            lastMovementWasLeft = false;
+            notMoving = false;
+            animator.SetInteger("Running", 1);
         }
         else
-        {
+        { 
             notMoving = true;
-            animator.SetInteger("Movement_x", 0);
+            animator.SetInteger("Running", 0);
         }
-        return characterScale;
     }
 
     void move(float movementX, float movementY)
@@ -201,7 +192,6 @@ public class Movimiento : MonoBehaviour
         else
         {
             transform.Translate(new Vector3(movementX, movementY, 0) * velocity_punishment * velocidad * Time.deltaTime);
-            defence_player.updateDefenceSize();
         }
     }
 
@@ -213,7 +203,8 @@ public class Movimiento : MonoBehaviour
 
 
         Vector3 characterScale = transform.localScale;
-        transform.localScale = SetCorrectAnimation(movementX, movementY, characterScale);
+        setCorrectAnimation(movementX, movementY);
+        transform.localScale = correctSide(movementX, characterScale);
         move(movementX, movementY);
     }
 

@@ -132,7 +132,7 @@ namespace Pathfinding {
 					// Range of attack 
 					if (Distance(target.position) <= 3)
 					{
-						//Notmove();
+				
 						animations.TurnSide(target.position);
 						animations.StartReadyToAttack();
 						if (attack_preparation.timeOver()) enemy_attack.attack();
