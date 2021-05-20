@@ -38388,6 +38388,9 @@ MonoBehaviour:
   defence_player: {fileID: 617996874}
   velocity_punishment: 0.5
   velocidad: 10
+  dashSpeed: 0
+  dashTime: 0
+  startDashTime: 0
 --- !u!95 &617996867
 Animator:
   serializedVersion: 3
@@ -42739,16 +42742,21 @@ PrefabInstance:
     - target: {fileID: 6125542113317514049, guid: 8dd4cb5eca1483f4e89b40667e461bc4,
         type: 3}
       propertyPath: endReachedDistance
-      value: 3.5
+      value: 4.9
       objectReference: {fileID: 0}
     - target: {fileID: 6125542113317514049, guid: 8dd4cb5eca1483f4e89b40667e461bc4,
         type: 3}
       propertyPath: whenCloseToDestination
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6125542113317514049, guid: 8dd4cb5eca1483f4e89b40667e461bc4,
         type: 3}
       propertyPath: alwaysDrawGizmos
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6125542113317514049, guid: 8dd4cb5eca1483f4e89b40667e461bc4,
+        type: 3}
+      propertyPath: slowdownDistance
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6125542113317514050, guid: 8dd4cb5eca1483f4e89b40667e461bc4,

@@ -130,7 +130,7 @@ namespace Pathfinding {
 					//Check if we are so close to the Player that we have to stop. 
 
 					// Range of attack 
-					if (Distance(target.position) <= 3)
+					if (Distance(target.position) <= 5)
 					{
 				
 						animations.TurnSide(target.position);

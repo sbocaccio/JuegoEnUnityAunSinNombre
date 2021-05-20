@@ -143,13 +143,23 @@ public class Movimiento : MonoBehaviour
     public float velocidad = 0.3f;
     bool lastMovementWasLeft =false ;
     bool notMoving = true;
-    public int characterSpriteSize()
-    {
-        // Player looks right is positive, left is negative
-        if (transform.localScale.x > 0) return 1;
-        else return -1;
-    }
 
+
+    /*Dashhh*/
+    public float dashSpeed;
+    public float dashTime;
+    public float startDashTime;
+
+    
+    public bool playerIsLookingRight()
+    {
+        return transform.localScale.x > 0;
+    }
+    public bool playerIsLookingLeft()
+    {
+        return !(transform.localScale.x > 0);
+
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -184,7 +194,6 @@ public class Movimiento : MonoBehaviour
 
     void move(float movementX, float movementY)
     {
-
         if (!defence_player.defenseActivated())
         {
             transform.Translate(new Vector3(movementX, movementY, 0) * velocidad * Time.deltaTime);
@@ -201,9 +210,13 @@ public class Movimiento : MonoBehaviour
         float movementX = Input.GetAxis("Horizontal");
         float movementY = Input.GetAxis("Vertical");
 
-
-        Vector3 characterScale = transform.localScale;
+        if (Input.GetKeyDown(KeyCode.LeftShift)){
+            animator.SetTrigger("Roll");
+        
+        }
+        
         setCorrectAnimation(movementX, movementY);
+        Vector3 characterScale = transform.localScale;
         transform.localScale = correctSide(movementX, characterScale);
         move(movementX, movementY);
     }
