@@ -2,38 +2,51 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Defence : MonoBehaviour
+public class Defence : State
 {
 
 
     [SerializeField]
     private GameObject playerObject;
     bool DefenseMode = false;
-    Player player_script;
-    
+  
+  
     [SerializeField]
     private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        player_script = playerObject.GetComponent<Player>();
- 
+        
     }
 
+    public override bool CanLeaveState() { return true; }
     // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.X))
         {
-            ActivateDefense();
+            if(!imTheCurrentState) stateHandler.StateTriesToChangeChangeState(this);
+
         }
         if (Input.GetKeyUp(KeyCode.X))
         {
-            DesActivateDefense();
+
+            if(imTheCurrentState) stateHandler.LeavesState(this);
         }
     }
+    public override void IsCurrentState()
+    {
+        imTheCurrentState = true;
+        ActivateDefense();
+    }
 
+    public override void leaveState()
+    {
+
+        imTheCurrentState = false;
+        DesActivateDefense();
+    }
     void ActivateDefense()
     {
         animator.SetTrigger("Defence_activated");

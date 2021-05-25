@@ -40,7 +40,6 @@ namespace Pathfinding {
 		public enemy_animator animations;
 		private float closeToStop = 8.5f;
 		private float movementSize = 1; // It's value are only 1 or -1, 
-		private float maxSpeedAUX;
 		IAstarAI ai;
 		bool moving = true;
 		Timer attack_preparation;

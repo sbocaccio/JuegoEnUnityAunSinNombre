@@ -38365,6 +38365,9 @@ GameObject:
   - component: {fileID: 617996875}
   - component: {fileID: 617996876}
   - component: {fileID: 617996877}
+  - component: {fileID: 617996878}
+  - component: {fileID: 617996879}
+  - component: {fileID: 617996880}
   m_Layer: 17
   m_Name: Player
   m_TagString: Player
@@ -38384,13 +38387,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a0785d7811af84282694db48b312e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stateHandler: {fileID: 0}
   animator: {fileID: 617996867}
   defence_player: {fileID: 617996874}
   velocity_punishment: 0.5
   velocidad: 10
   dashSpeed: 0
-  dashTime: 0
-  startDashTime: 0
+  dashTime: 3
+  startDashTime: 0.8
 --- !u!95 &617996867
 Animator:
   serializedVersion: 3
@@ -38468,14 +38472,6 @@ MonoBehaviour:
   dropPoint: {fileID: 0}
   lifeBar: {fileID: 617996877}
   max_Health: 100
-  animator: {fileID: 617996867}
-  audioManager: {fileID: 1194522817}
-  coolDown: 0.2
-  attackRangeTransform: {fileID: 1489676666}
-  attackRange: 0.5
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!212 &617996871
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -38574,6 +38570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1752bff19a1de53479c474f1d9cbeba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stateHandler: {fileID: 617996879}
   playerObject: {fileID: 617996865}
   animator: {fileID: 617996867}
 --- !u!82 &617996875
@@ -38698,6 +38695,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1051358276}
+--- !u!114 &617996878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617996865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d34c826b546d854693fff9c674e1600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateHandler: {fileID: 617996879}
+--- !u!114 &617996879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617996865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 884c3117af7b52d4db884fbf0c7c0706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &617996880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617996865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cf36ffe4e90a8047ab9eb42372c560d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateHandler: {fileID: 617996879}
+  animator: {fileID: 617996867}
+  audioManager: {fileID: 1194522817}
+  coolDown: 0.5
+  attackRangeTransform: {fileID: 1489676666}
+  attackRange: 3
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 786432
 --- !u!213 &634950982
 Sprite:
   m_ObjectHideFlags: 0
@@ -39143,6 +39186,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1509006119}
+--- !u!114 &786270593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786270577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 884c3117af7b52d4db884fbf0c7c0706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!213 &821894235
 Sprite:
   m_ObjectHideFlags: 0
@@ -42889,6 +42944,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6125542113317514168, guid: 8dd4cb5eca1483f4e89b40667e461bc4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 6125542113317514170, guid: 8dd4cb5eca1483f4e89b40667e461bc4,
         type: 3}
