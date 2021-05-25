@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class StateHandler : MonoBehaviour
 {
-
+    [SerializeField]
     private State actual_state;
+    [SerializeField]
     private State movement_state;
 
     void Start()
     {
         actual_state = gameObject.GetComponent<Idle>();
+        Debug.Log(actual_state);
         actual_state.IsCurrentState();
         movement_state = gameObject.GetComponent<Movimiento>();
+        Debug.Log(movement_state);
     }
-
+    private void Update()
+    {
+    }
     virtual public void StateTriesToChangeChangeState(State aPetitionerState)
     {
-        if (actual_state.CanLeaveState())
+        if (actual_state.CanLeaveState() && movement_state.CanLeaveState())
         {
             actual_state.leaveState();
             actual_state = aPetitionerState;

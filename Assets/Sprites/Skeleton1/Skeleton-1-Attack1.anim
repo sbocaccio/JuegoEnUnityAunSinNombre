@@ -94,14 +94,6 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.6666667
-    functionName: GiveDamageToTargetsInReach
-    data: 
-    objectReferenceParameter: {fileID: 6125542113317514168, guid: 8dd4cb5eca1483f4e89b40667e461bc4,
-      type: 3}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
   - time: 1.15
     functionName: GiveDamageToTargetsInReach
     data: 

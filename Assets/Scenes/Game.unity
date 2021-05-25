@@ -38720,6 +38720,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 884c3117af7b52d4db884fbf0c7c0706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actual_state: {fileID: 617996866}
+  movement_state: {fileID: 617996878}
 --- !u!114 &617996880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39198,6 +39200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 884c3117af7b52d4db884fbf0c7c0706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actual_state: {fileID: 0}
+  movement_state: {fileID: 0}
 --- !u!213 &821894235
 Sprite:
   m_ObjectHideFlags: 0

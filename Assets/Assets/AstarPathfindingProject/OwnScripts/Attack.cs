@@ -18,19 +18,19 @@ public class Attack : State
 
     [SerializeField]
     private float attackRange = 3.0f;
-
+    private bool attacking = false;
     private int attackDamage = 7;
 
     public LayerMask enemyLayer;
+
+    public override bool CanLeaveState() { return !attacking| (coolDownTimer <= 0); }
     void Update()
     {
     
         if (Input.GetKeyDown(KeyCode.Space) && coolDownTimer == 0)
         {
-            attack();
-            audioManager.Play("Player_Punch1");
-            animator.SetTrigger("Punch");
-            coolDownTimer = coolDown;
+            if (!imTheCurrentState) stateHandler.StateTriesToChangeChangeState(this);
+
         }
 
 
@@ -41,6 +41,32 @@ public class Attack : State
         }
     }
 
+    public override void IsCurrentState()
+    
+    {
+        Debug.Log("Attacking estado");
+        imTheCurrentState = true;
+        attack();
+        audioManager.Play("Player_Punch1");
+        animator.SetTrigger("Punch");
+        coolDownTimer = coolDown;
+        attacking = true;
+    }
+    public void AttackTriestoLeaveState()
+    {
+        Debug.Log("trato de dejar estado");
+        stateHandler.LeavesState(this);
+    }
+    public override void leaveState()
+    {
+        Debug.Log("dejo attacking");
+        if (imTheCurrentState) { 
+            imTheCurrentState = false;
+            attacking = false;
+        }
+        
+        
+    }
     void attack()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(attackRangeTransform.position, attackRange, enemyLayer);
