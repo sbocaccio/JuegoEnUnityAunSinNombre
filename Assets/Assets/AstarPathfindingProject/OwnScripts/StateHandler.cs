@@ -12,10 +12,9 @@ public class StateHandler : MonoBehaviour
     void Start()
     {
         actual_state = gameObject.GetComponent<Idle>();
-        Debug.Log(actual_state);
         actual_state.IsCurrentState();
         movement_state = gameObject.GetComponent<Movimiento>();
-        Debug.Log(movement_state);
+
     }
     private void Update()
     {

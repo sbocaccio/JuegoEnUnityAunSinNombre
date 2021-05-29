@@ -88,7 +88,14 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: 
+    functionName: Notmove
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0
+    functionName: MoveAgain
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -96,13 +103,6 @@ AnimationClip:
     messageOptions: 0
   - time: 1.15
     functionName: GiveDamageToTargetsInReach
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 1.15
-    functionName: 
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
