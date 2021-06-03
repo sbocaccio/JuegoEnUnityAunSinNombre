@@ -19,6 +19,7 @@ public class BarScript : MonoBehaviour
     void Start()
     {
         currentFillPorcentage = maxFillPorcentage;
+
     }
 
     // Update is called once per frame

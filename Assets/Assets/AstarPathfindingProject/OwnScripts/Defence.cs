@@ -2,65 +2,67 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Defence : MonoBehaviour
+public class Defence : State
 {
 
 
     [SerializeField]
     private GameObject playerObject;
     bool DefenseMode = false;
-    int defence_size = 0;
-    Player player_script;
-    Movimiento player_scale;
-
+  
+  
     [SerializeField]
     private Animator animator;
-
-
 
     // Start is called before the first frame update
     void Start()
     {
-        player_script = playerObject.GetComponent<Player>();
-        player_scale = playerObject.GetComponent<Movimiento>();
+        
     }
 
+    public override bool CanLeaveState() { return true; }
     // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.X))
         {
-            animator.SetTrigger("Defence_activated");
-            DefenseMode = true;
-            defence_size = player_scale.characterSpriteSize();
-            // Debug.Log("Apreto X");
-            animator.ResetTrigger("Defence_desactivated");
+            if(!imTheCurrentState) stateHandler.StateTriesToChangeChangeState(this);
+
         }
         if (Input.GetKeyUp(KeyCode.X))
         {
-            animator.ResetTrigger("Defence_activated");
-            animator.SetTrigger("Defence_desactivated");
-            DefenseMode = false;
-            defence_size = 0;
-           // Debug.Log("No apreto X");
+
+            if(imTheCurrentState) stateHandler.LeavesState(this);
         }
-        //Defence_activated
+    }
+    public override void IsCurrentState()
+    {
+        imTheCurrentState = true;
+        ActivateDefense();
+    }
+
+    public override void leaveState()
+    {
+
+        imTheCurrentState = false;
+        DesActivateDefense();
+    }
+    void ActivateDefense()
+    {
+        animator.SetTrigger("Defence_activated");
+        DefenseMode = true;
+        animator.ResetTrigger("Defence_desactivated");
+    }
+
+    void DesActivateDefense()
+    {
+        animator.ResetTrigger("Defence_activated");
+        animator.SetTrigger("Defence_desactivated");
+        DefenseMode = false;
     }
     public bool defenseActivated(){
         return DefenseMode;
     }
-    public int defenseSize()
-    {
-        return defence_size;
-    }
-    public void updateDefenceSize()
-    {
-        if (DefenseMode)
-        {
-            defence_size = player_scale.characterSpriteSize();
-            
-
-        }
-    }
+ 
 
 }
