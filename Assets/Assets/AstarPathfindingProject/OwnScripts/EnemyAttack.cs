@@ -48,6 +48,7 @@ public void attack()
         {
             if (coolDownTimer == 0f && !waitingAnimationToFinish())
             {
+          
                 animations.StartAttacking();
             }
         }

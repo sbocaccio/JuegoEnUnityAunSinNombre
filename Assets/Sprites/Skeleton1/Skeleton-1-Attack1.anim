@@ -90,11 +90,12 @@ AnimationClip:
   - time: 0
     functionName: Notmove
     data: 
-    objectReferenceParameter: {fileID: 0}
+    objectReferenceParameter: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121,
+      type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0
+  - time: 1.0333333
     functionName: MoveAgain
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -104,7 +105,8 @@ AnimationClip:
   - time: 1.15
     functionName: GiveDamageToTargetsInReach
     data: 
-    objectReferenceParameter: {fileID: 0}
+    objectReferenceParameter: {fileID: 11500000, guid: 8c64e3742dbe4ef4593f32a3a4d3a14b,
+      type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

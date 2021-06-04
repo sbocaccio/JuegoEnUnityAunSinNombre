@@ -35,7 +35,6 @@ namespace Pathfinding {
 		private int patrol_range = 14;
 		public Transform target;
 		private Vector3 inicial_pos;
-		private Vector3 patroling_pos;
 		public Timer patrol_timer;
 		public enemy_animator animations;
 		private float closeToStop = 8.5f;
@@ -69,7 +68,6 @@ namespace Pathfinding {
 		{
 			player_transform = GameObject.FindGameObjectWithTag("Player").transform;
 			inicial_pos = transform.position;
-			patroling_pos = inicial_pos;
 			target = player_transform;
 			patrol_timer = new Timer(stop_time);
 			animations = gameObject.GetComponent<enemy_animator>();
@@ -129,9 +127,9 @@ namespace Pathfinding {
 					//Check if we are so close to the Player that we have to stop. 
 
 					// Range of attack 
-					if (Distance(target.position) <= 5)
+					if (Distance(target.position) <= 8)
 					{
-				
+										
 						animations.TurnSide(target.position);
 						animations.StartReadyToAttack();
 						if (attack_preparation.timeOver()) enemy_attack.attack();

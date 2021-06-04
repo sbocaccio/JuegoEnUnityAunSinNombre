@@ -96,6 +96,14 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 0
+    functionName: Notmove
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121,
+      type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.33333334
     functionName: GiveDamageToTargetsInReach
     data: 
@@ -107,6 +115,14 @@ AnimationClip:
     functionName: GiveDamageToTargetsInReach
     data: 
     objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.4833333
+    functionName: MoveAgain
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121,
+      type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

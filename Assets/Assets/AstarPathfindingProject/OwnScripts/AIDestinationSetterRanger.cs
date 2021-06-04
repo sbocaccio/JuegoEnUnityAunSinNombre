@@ -84,7 +84,7 @@ namespace Pathfinding
 			AIPath aipath = gameObject.GetComponent<AIPath>();
 			aipath.enabled = false;
 			moving = false;
-
+			Debug.Log("Not moving");
 
 		}
 		private void MoveAgain()
@@ -92,6 +92,7 @@ namespace Pathfinding
 			AIPath aipath = gameObject.GetComponent<AIPath>();
 			aipath.enabled = true;
 			moving = true;
+			Debug.Log("Moving again");
 		}
 		private void FlipSize()
 		{
