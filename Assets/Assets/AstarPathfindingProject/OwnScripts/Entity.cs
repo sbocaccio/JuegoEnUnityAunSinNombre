@@ -10,8 +10,7 @@ public class Entity : MonoBehaviour, IKillable
     public GameObject thedrop;
     public Transform dropPoint;
     public BarScript lifeBar;
-    static int ENEMY_LAYER = 8;
-   
+ 
     [SerializeField]
     private int max_Health = 100;
     private int current_Health = 100;
@@ -37,11 +36,8 @@ public class Entity : MonoBehaviour, IKillable
       
         if (GetHealth() <= 0)
         {
-            if(gameObject.layer == ENEMY_LAYER)
-            {
-                if (drops) {Instantiate(thedrop, dropPoint.position, dropPoint.rotation); }
-            }
-            Kill();
+           if (drops) { Instantiate(thedrop, dropPoint.position, dropPoint.rotation); }
+           Kill();
 
         }
     }

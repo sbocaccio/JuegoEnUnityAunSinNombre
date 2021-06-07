@@ -20,21 +20,35 @@ public class enemy_animator : MonoBehaviour
     int AttackAnimation = 1; // Values are 1 o -1 depend on which animation should do 
     public static AudioManager audioMananer;
     bool xxx= false;
-    
-    // Flip where the player is looking depending on where is the target.
-    public void TurnSide(Vector3 target)
+    bool canRotate = true;
+    private void DontRotate()
     {
-        Vector3 characterScale = gameObject.transform.localScale;
-        // The player is on the left
-        if ((gameObject.transform.position.x - target.x) >= 0)
-        {
-            characterScale.x = -1;     
-        }
-        else {
-            characterScale.x = 1;
-        }
-        gameObject.transform.localScale = characterScale;
+        canRotate = false;
     }
+    private void EnableRotate()
+    {
+        canRotate = true;
+    }
+    public void TurnSide(Vector3 target) // Flip where the player is looking depending on where is the target.
+    {
+        
+        if (canRotate)
+        {
+
+            Vector3 characterScale = gameObject.transform.localScale;
+            // The player is on the left
+            if ((gameObject.transform.position.x - target.x) >= 0)
+            {
+                characterScale.x = -1;
+            }
+            else
+            {
+                characterScale.x = 1;
+            }
+            gameObject.transform.localScale = characterScale;
+        }
+    }
+
 
     public void StartRunning()
     {
@@ -116,14 +130,14 @@ public class enemy_animator : MonoBehaviour
 
     void Start()
     {
-        // animator.SetInteger("State", 2);
+      
        audioMananer = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //animator.SetInteger("State", 2);
+       
 
     }
 }

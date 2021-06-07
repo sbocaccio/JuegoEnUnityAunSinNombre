@@ -93,6 +93,8 @@ namespace Pathfinding {
 			aipath.enabled = true;
 			moving = true;
 		}
+
+		
 		private void FlipSize() {
 
 			if (patrol_vertical)
@@ -108,7 +110,10 @@ namespace Pathfinding {
 				ai.destination = inicial_pos;
 			}
 		}
-
+		private void CheckSide()
+        {
+			animations.TurnSide(target.position);
+        }
 		private float Distance(Vector3 pos)
 		{
 			return (Math.Abs(pos.x - transform.position.x) + Math.Abs(pos.y - transform.position.y));
@@ -128,26 +133,25 @@ namespace Pathfinding {
 
 					// Range of attack 
 					if (Distance(target.position) <= 8)
-					{
-										
-						animations.TurnSide(target.position);
+                    {
+						CheckSide();
 						animations.StartReadyToAttack();
-						if (attack_preparation.timeOver()) enemy_attack.attack();
-					}
+                        if (attack_preparation.timeOver()) enemy_attack.attack();
+                    }
 
-					// When the player is close, the enemy stops running and starts walking "OnGuard" 
-					else if ((Distance(target.position) < closeToStop))
+                    // When the player is close, the enemy stops running and starts walking "OnGuard" 
+                    else if ((Distance(target.position) < closeToStop))
 					{
 						attack_preparation.setTimer();
 						if (!moving) { MoveAgain(); }
-						animations.TurnSide(target.position);
+						CheckSide();
 						animations.StartOnGuard();
 					}
 					// Range of start running
 					else
 					{
 						if (!moving) { MoveAgain(); }
-						animations.TurnSide(target.position);
+						CheckSide();
 						animations.StartRunning();
 					}
 				}
@@ -174,7 +178,12 @@ namespace Pathfinding {
 
 			}
 		}
-	}
+
+        private void NewMethod()
+        {
+            animations.TurnSide(target.position);
+        }
+    }
 }
 
 
