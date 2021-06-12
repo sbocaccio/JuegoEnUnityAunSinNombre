@@ -37,6 +37,10 @@ public class Attack : State
         coolDownTimer -= Time.deltaTime;
         if (coolDownTimer < 0)
         {
+            if (imTheCurrentState)
+            {
+                stateHandler.LeavesState(this);
+            }
             coolDownTimer = 0;
         }
     }

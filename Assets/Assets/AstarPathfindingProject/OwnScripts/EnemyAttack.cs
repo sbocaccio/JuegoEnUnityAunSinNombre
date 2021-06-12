@@ -69,7 +69,6 @@ public void attack()
         {
             if (tar.gameObject != this.gameObject) tar.GetComponent<Entity>().TakeDamage(4);
 
-
         }
     }
     public void Update()

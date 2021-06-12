@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class State : MonoBehaviour
+public class enemyState : MonoBehaviour
 {
-    public StateHandler stateHandler;
+    public EnemyStateHandler stateHandler;
     protected bool imTheCurrentState;
     // Start is called before the first frame update
     public virtual void IsCurrentState()
@@ -13,15 +13,16 @@ public class State : MonoBehaviour
     }
     public virtual void TryToSetState() { }
     public virtual bool CanLeaveState() { return true; }
-    
 
-    public virtual void leaveState() {
+
+    public virtual void leaveState()
+    {
 
         imTheCurrentState = false;
     }
     // Update is called once per frame
     void Start()
     {
-        stateHandler = gameObject.GetComponent<StateHandler>();
+        stateHandler = gameObject.GetComponent<EnemyStateHandler>();
     }
 }

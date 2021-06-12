@@ -106,7 +106,6 @@ namespace Pathfinding {
 			else if (patrol_horizontal)
 			{
 				inicial_pos.x = inicial_pos.x + (movementSize * patrol_range);
-				movementSize = movementSize * -1;
 				ai.destination = inicial_pos;
 			}
 		}
